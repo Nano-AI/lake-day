@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lake Day — which lake, which day</title>
+<meta name="description" content="A personal iOS app for Washington lake days: live swim-beach safety, water temp, a weather-scored rating, crowd estimate and smoke AQI. No backend, no API keys.">
+<meta name="color-scheme" content="light dark">
+<style>
+:root{
+  /* Pastel Nature ground + derived deeps (DESIGN.md) */
+  --mist:#F2EDDC; --shallows:#D3EBE9; --paper:#BAD0DE; --tasman:#CADECD;
+  --pale-green:#DDE6CF; --gray:#EEEEEE;
+  --ink:#26424A; --cold:#3A7082; --sun:#5FA07B;
+  --open:#3F7D61; --caution:#A9742E; --closed:#B15140; --unknown:#74858A;
+
+  --bg:var(--mist); --surface:#FBF8EF; --line:var(--tasman);
+  --text:var(--ink); --muted:#5A7076; --track:var(--shallows);
+
+  --display:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+  --gut:clamp(1.25rem,4vw,2.5rem);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#1A2E34; --surface:#223B43; --line:#31525C;
+    --text:#E8F0EC; --muted:#9FB6BB; --track:#31525C;
+    --cold:#7FB3C4; --sun:#8FC7A5;
+    --open:#6FAE8B; --caution:#D3A05A; --closed:#DD8574; --unknown:#93A7AC;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--body); font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:62rem; margin:0 auto; padding:0 var(--gut)}
+h1,h2,h3,.display{font-family:var(--display); letter-spacing:-.02em}
+a{color:var(--cold)}
+a:focus-visible,button:focus-visible{outline:2.5px solid var(--cold); outline-offset:3px; border-radius:4px}
+
+/* ── eyebrow: every section is labelled by the cadence of its data ── */
+.eyebrow{
+  font-size:.72rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 .6rem; display:flex; align-items:center; gap:.6rem;
+}
+.eyebrow::after{content:""; flex:1; height:1px; background:var(--line)}
+
+/* ── masthead ── */
+.top{display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.6rem 0}
+.mark{font-family:var(--display); font-weight:700; font-size:1.05rem; letter-spacing:-.01em; display:flex; align-items:center; gap:.5rem}
+.mark span{width:.62rem; height:.62rem; border-radius:50%; background:var(--sun); box-shadow:0 0 0 3px color-mix(in srgb,var(--sun) 22%,transparent)}
+.top a{font-size:.9rem; text-decoration:none; font-weight:500}
+.top a:hover{text-decoration:underline}
+
+/* ── hero ── */
+.hero{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(1.5rem,5vw,3.5rem); align-items:center; padding:clamp(1rem,5vw,3rem) 0 clamp(2rem,6vw,4rem)}
+.hero h1{font-size:clamp(2.6rem,7vw,4.1rem); line-height:1.02; margin:.3rem 0 1rem; font-weight:700}
+.hero p{font-size:clamp(1.02rem,2.2vw,1.16rem); color:var(--muted); margin:0 0 1.5rem; max-width:34ch}
+.hero .lede{color:var(--text)}
+.hero .eyebrow::after{display:none}   /* the rule collapses when this label wraps */
+.meta{display:flex; flex-wrap:wrap; gap:.45rem}
+.chip{font-size:.8rem; font-weight:500; padding:.3rem .7rem; border-radius:999px; background:var(--shallows); color:var(--ink); border:1px solid color-mix(in srgb,var(--ink) 12%,transparent)}
+@media (prefers-color-scheme:dark){.chip{background:#2C4B55; color:var(--text)}}
+
+/* ── signature: the buoy gauge ── */
+.gauge-card{background:var(--surface); border:1px solid var(--line); border-radius:1.4rem; padding:1.6rem 1.4rem 1.3rem; text-align:center}
+.gauge{width:min(15rem,72vw); height:auto; margin:0 auto; display:block}
+.tick{transform-box:fill-box; transform-origin:center; transition:fill .45s ease}
+.reading{font-family:var(--display); font-weight:700; font-variant-numeric:tabular-nums; fill:var(--text)}
+.reading-lbl{font-family:var(--body); font-size:.62rem; letter-spacing:.14em; fill:var(--muted); text-transform:uppercase}
+#slash{transition:opacity .35s ease}
+.score-line{font-family:var(--display); font-weight:700; font-size:2rem; font-variant-numeric:tabular-nums; margin:.1rem 0 0; line-height:1.1}
+.score-cap{font-size:.72rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin:0 0 .9rem}
+.verdict{font-size:.95rem; color:var(--text); margin:.9rem auto 0; max-width:26ch; min-height:3.1em}
+.stale{display:block; font-size:.78rem; color:var(--muted); margin-top:.35rem}
+
+.states{display:flex; gap:.4rem; justify-content:center; margin-top:1.1rem; flex-wrap:wrap}
+.states button{
+  font:inherit; font-size:.83rem; font-weight:500; cursor:pointer;
+  padding:.42rem .85rem; border-radius:999px; background:transparent;
+  border:1.5px solid var(--line); color:var(--muted);
+  display:inline-flex; align-items:center; gap:.42rem; transition:border-color .2s,color .2s;
+}
+.states button:hover{border-color:var(--cold); color:var(--text)}
+.states button[aria-pressed="true"]{border-color:currentColor; color:var(--text); background:color-mix(in srgb,var(--shallows) 55%,transparent)}
+@media (prefers-color-scheme:dark){.states button[aria-pressed="true"]{background:#2C4B55}}
+.dot{width:.55rem; height:.55rem; border-radius:50%; flex:none}
+.hint{font-size:.78rem; color:var(--muted); text-align:center; margin:.7rem 0 0}
+
+/* ── sections ── */
+section{padding:clamp(2.2rem,6vw,3.6rem) 0; border-top:1px solid var(--line)}
+section h2{font-size:clamp(1.5rem,3.6vw,2rem); margin:0 0 .5rem; font-weight:700}
+.sub{color:var(--muted); margin:0 0 1.8rem; max-width:56ch}
+
+/* signboard legend — mirrors the county advisory board at the beach */
+.board{display:grid; grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr)); gap:.8rem}
+.state{background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--c); border-radius:.7rem; padding:.95rem 1.1rem}
+.state h3{font-size:.95rem; margin:0 0 .25rem; color:var(--c); display:flex; align-items:center; gap:.45rem; font-weight:700}
+.glyph{font-size:.9rem}
+.state p{font-size:.87rem; color:var(--muted); margin:0; line-height:1.5}
+
+/* feeds */
+.feeds{display:grid; gap:.7rem}
+.feed{display:grid; grid-template-columns:1fr auto; gap:.4rem 1.2rem; align-items:baseline; background:var(--surface); border:1px solid var(--line); border-radius:.7rem; padding:.9rem 1.1rem}
+.feed h3{font-size:.98rem; margin:0; font-weight:600; font-family:var(--body)}
+.feed .src{grid-column:1/-1; font-size:.85rem; color:var(--muted); margin:0}
+.cadence{font-size:.68rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--cold); white-space:nowrap; font-variant-numeric:tabular-nums}
+
+/* rating weights */
+.weights{display:grid; gap:.55rem; margin:0 0 1.4rem}
+.w{display:grid; grid-template-columns:8.5rem 1fr 2.8rem; gap:.85rem; align-items:center; font-size:.92rem}
+.bar{height:.62rem; border-radius:999px; background:var(--paper); overflow:hidden}
+@media (prefers-color-scheme:dark){.bar{background:#31525C}}
+.bar i{display:block; height:100%; border-radius:999px; background:var(--sun); width:var(--w); transform-origin:left; animation:grow .75s cubic-bezier(.22,1,.36,1) both}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.w b{font-variant-numeric:tabular-nums; font-weight:600; text-align:right; font-family:var(--display)}
+.rule{background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--closed); border-radius:.7rem; padding:1rem 1.2rem; font-size:.93rem}
+.rule strong{color:var(--closed)}
+
+/* code */
+pre{background:var(--surface); border:1px solid var(--line); border-radius:.7rem; padding:1rem 1.15rem; overflow-x:auto; font-size:.86rem; line-height:1.65; margin:0 0 1rem}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+p code{background:var(--surface); border:1px solid var(--line); border-radius:.35rem; padding:.08em .38em; font-size:.88em}
+.note{font-size:.9rem; color:var(--muted)}
+
+footer{border-top:1px solid var(--line); padding:2.2rem 0 3rem; font-size:.87rem; color:var(--muted)}
+footer p{margin:0 0 .6rem; max-width:60ch}
+.disclaim{border-left:3px solid var(--caution); padding-left:.9rem; color:var(--text)}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr; text-align:left}
+  .gauge-card{order:-1}
+  .w{grid-template-columns:6.6rem 1fr 2.6rem; font-size:.86rem}
+  /* the cadence label is nowrap, so stack it rather than let it push the row wide */
+  .feed{grid-template-columns:1fr; gap:.25rem}
+  .cadence{order:-1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top">
+    <div class="mark"><span></span>Lake Day</div>
+    <a href="https://github.com/Nano-AI/lake-day">GitHub&nbsp;↗</a>
+  </div>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Personal tool · Washington lakes</p>
+      <h1>Which lake,<br>which day.</h1>
+      <p class="lede">An iOS app that reads the county’s swim-beach program, the forecast and the drive, then tells you whether today is worth the trip — and says so plainly when it isn’t.</p>
+      <div class="meta">
+        <span class="chip">11 lakes · 30 beaches</span>
+        <span class="chip">SwiftUI</span>
+        <span class="chip">No backend</span>
+        <span class="chip">No API keys</span>
+      </div>
+    </div>
+
+    <div class="gauge-card">
+      <svg class="gauge" viewBox="0 0 200 200" role="img" aria-labelledby="gauge-title">
+        <title id="gauge-title">Lake day score dial</title>
+        <g id="ticks"></g>
+        <text class="reading" id="temp" x="100" y="103" text-anchor="middle" font-size="40">76°</text>
+        <text class="reading-lbl" x="100" y="122" text-anchor="middle">water</text>
+        <line id="slash" x1="52" y1="148" x2="148" y2="52" stroke="var(--unknown)" stroke-width="7" stroke-linecap="round" opacity="0"></line>
+      </svg>
+      <p class="score-line" id="score">82</p>
+      <p class="score-cap">lake day score</p>
+      <p class="verdict" id="verdict">Saturday looks like a lake day — 82° air, 76° water.<span class="stale" id="stale">Sampled Tue · 4 days ago</span></p>
+
+      <div class="states" role="group" aria-label="Beach safety state">
+        <button type="button" data-state="open" aria-pressed="true"><i class="dot" style="background:var(--open)"></i>Open</button>
+        <button type="button" data-state="caution" aria-pressed="false"><i class="dot" style="background:var(--caution)"></i>Caution</button>
+        <button type="button" data-state="closed" aria-pressed="false"><i class="dot" style="background:var(--closed)"></i>Closed</button>
+      </div>
+      <p class="hint">Illustrative — try a closure.</p>
+    </div>
+  </header>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <p class="eyebrow">Never a fake green</p>
+    <h2>Four states, and one of them is “we don’t know”</h2>
+    <p class="sub">Safety is the first thing the app resolves and the only thing that can override everything else. A closure zeroes the score outright — no number, no “but the weather’s nice.” When a feed breaks, the state degrades to unknown rather than defaulting to something reassuring.</p>
+    <div class="board">
+      <div class="state" style="--c:var(--open)"><h3><span class="glyph">●</span>Open</h3><p>No advisory, and the sample behind it is recent.</p></div>
+      <div class="state" style="--c:var(--caution)"><h3><span class="glyph">▲</span>Caution</h3><p>An advisory, an algae watch, or a sample gone stale. Caps the score at 60.</p></div>
+      <div class="state" style="--c:var(--closed)"><h3><span class="glyph">✕</span>Closed</h3><p>High bacteria or a toxic-algae advisory. Score is zero and the dial slashes out.</p></div>
+      <div class="state" style="--c:var(--unknown)"><h3><span class="glyph">—</span>Unknown</h3><p>No data, or the feed didn’t answer. Shown as missing, never as safe.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Where the numbers come from</p>
+    <h2>Five feeds, all free, none of them keyed</h2>
+    <p class="sub">Everything is fetched on-device. There is no server to go down, no key to rotate, and nothing about you leaves the phone except the requests themselves.</p>
+    <div class="feeds">
+      <div class="feed">
+        <h3>Beach safety, closures, water temp</h3>
+        <p class="cadence">Weekly · sampled Mon/Tue</p>
+        <p class="src">King County ArcGIS swim-beach program — one request covers all 30 monitored beaches. Seasonal, mid-May to September.</p>
+      </div>
+      <div class="feed">
+        <h3>Seven-day forecast</h3>
+        <p class="cadence">Hourly</p>
+        <p class="src">Open-Meteo. Air temperature, sun and wind, scored per day so you can pick the day as well as the lake.</p>
+      </div>
+      <div class="feed">
+        <h3>Wildfire smoke &amp; air quality</h3>
+        <p class="cadence">Hourly</p>
+        <p class="src">Open-Meteo air quality. Surfaced as a note on the verdict rather than folded into the score — smoke is a reason to stay home, not a rating.</p>
+      </div>
+      <div class="feed">
+        <h3>Crowd estimate</h3>
+        <p class="cadence">Live</p>
+        <p class="src">Apple MapKit traffic-aware drive time against the free-flow baseline, plus a weekend and weather weighting. Always labelled an estimate, because that’s what it is — no ToS-legal real-time busyness source exists.</p>
+      </div>
+      <div class="feed">
+        <h3>News &amp; weather alerts</h3>
+        <p class="cadence">Live · cached 4h</p>
+        <p class="src">National Weather Service active alerts plus a filtered per-lake news search. Display only; it never moves the score.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">How the score is built</p>
+    <h2>Weighted, and shown broken down</h2>
+    <p class="sub">The components are always visible on the detail screen, so a 68 can be read rather than trusted. Weights live in one constants struct — they’re tuned against real weekends, not derived from anything.</p>
+    <div class="weights">
+      <div class="w"><span>Sun + air</span><span class="bar"><i style="--w:100%"></i></span><b>40%</b></div>
+      <div class="w"><span>Water temp</span><span class="bar"><i style="--w:62.5%"></i></span><b>25%</b></div>
+      <div class="w"><span>Crowds</span><span class="bar"><i style="--w:50%"></i></span><b>20%</b></div>
+      <div class="w"><span>Wind</span><span class="bar"><i style="--w:37.5%"></i></span><b>15%</b></div>
+    </div>
+    <p class="rule"><strong>Before any of that:</strong> an active closure sets the score to zero. Weather cannot argue with a bacteria advisory.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Build it</p>
+    <h2>Clone, generate, run</h2>
+    <p class="sub">The Xcode project isn’t checked in — it's generated from <code>project.yml</code>, so there’s nothing to merge-conflict over.</p>
+<pre><code>git clone https://github.com/Nano-AI/lake-day.git
+cd lake-day
+brew install xcodegen &amp;&amp; xcodegen
+open LakeDay.xcodeproj</code></pre>
+    <p class="note">Pick the LakeDay scheme and an iPhone simulator. For a real phone, set your team under Signing &amp; Capabilities — a free Apple ID works, and re-signs weekly. Tests cover the rating curves, the safety hard-zero and the feed parsers.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="disclaim">Lake Day republishes data from King County, the National Weather Service and Open-Meteo. It is a personal project, it can be wrong, and it is not a substitute for the signage posted at the beach. If the sign and the app disagree, believe the sign.</p>
+    <p>MIT licensed · <a href="https://github.com/Nano-AI/lake-day">github.com/Nano-AI/lake-day</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var TICKS = 40, R = 78, CX = 100, CY = 100;
+  var g = document.getElementById('ticks');
+  var ns = 'http://www.w3.org/2000/svg';
+  var nodes = [];
+
+  // A ring of discrete segments, banded like a mooring buoy rather than a
+  // smooth progress arc — the app's dial reads as an instrument, not a donut.
+  for (var i = 0; i < TICKS; i++){
+    var a = (i / TICKS) * Math.PI * 2 - Math.PI / 2;
+    var inner = R - 9, outer = R + 5;
+    var t = document.createElementNS(ns, 'line');
+    t.setAttribute('x1', CX + Math.cos(a) * inner); t.setAttribute('y1', CY + Math.sin(a) * inner);
+    t.setAttribute('x2', CX + Math.cos(a) * outer); t.setAttribute('y2', CY + Math.sin(a) * outer);
+    t.setAttribute('stroke-width', '5'); t.setAttribute('stroke-linecap', 'round');
+    t.setAttribute('class', 'tick');
+    t.setAttribute('stroke', 'var(--track)');
+    g.appendChild(t); nodes.push(t);
+  }
+
+  var STATES = {
+    open:    {score:82, temp:'76°', color:'var(--sun)',
+              verdict:'Saturday looks like a lake day — 82° air, 76° water.',
+              stale:'Sampled Tue · 4 days ago'},
+    caution: {score:60, temp:'71°', color:'var(--caution)',
+              verdict:'Swimmable, but the last sample is 12 days old. Score capped at 60.',
+              stale:'Sampled Jul 21 · stale for the season'},
+    closed:  {score:null, temp:'—', color:'var(--unknown)',
+              verdict:'Skip it — high bacteria, closed since Thursday.',
+              stale:'King County advisory · still active'}
+  };
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var current = 'open', timers = [];
+
+  function render(key, animate){
+    var s = STATES[key];
+    timers.forEach(clearTimeout); timers = [];
+    var filled = s.score === null ? 0 : Math.round(s.score / 100 * TICKS);
+
+    nodes.forEach(function(n, i){
+      var on = i < filled;
+      var paint = function(){ n.setAttribute('stroke', on ? s.color : 'var(--track)'); };
+      if (animate && !reduce) timers.push(setTimeout(paint, i * 14)); else paint();
+    });
+
+    document.getElementById('temp').textContent = s.temp;
+    document.getElementById('score').textContent = s.score === null ? '—' : s.score;
+    document.getElementById('verdict').firstChild.nodeValue = s.verdict;
+    document.getElementById('stale').textContent = s.stale;
+    document.getElementById('slash').setAttribute('opacity', s.score === null ? '1' : '0');
+    document.getElementById('score').style.color = s.score === null ? 'var(--unknown)' : '';
+  }
+
+  document.querySelectorAll('.states button').forEach(function(b){
+    b.addEventListener('click', function(){
+      current = b.dataset.state;
+      document.querySelectorAll('.states button').forEach(function(o){
+        o.setAttribute('aria-pressed', String(o === b));
+      });
+      render(current, true);
+    });
+  });
+
+  render('open', false);
+  // One orchestrated moment: the dial sweeps in on load, nothing else moves.
+  if (!reduce) {
+    nodes.forEach(function(n){ n.setAttribute('stroke', 'var(--track)'); });
+    setTimeout(function(){ render('open', true); }, 220);
+  }
+})();
+</script>
+</body>
+</html>

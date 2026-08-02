@@ -18,10 +18,11 @@ struct AlgaeAdvisoryService: AlgaeAdvisoryProviding {
     let session: URLSession
     private let cache: SnapshotCache
 
-    /// The published snapshot URL. Set this to your hosted JSON (e.g. the
-    /// GitHub raw URL the `algae-scraper` Action writes to). Left nil until then,
-    /// so the feed is a clean no-op rather than a stream of failed fetches.
-    static let defaultSnapshotURL: URL? = nil   // TODO: e.g. URL(string: "https://raw.githubusercontent.com/<you>/lake-day/main/docs/algae-snapshot.json")
+    /// The published snapshot URL — the JSON the `algae-snapshot` Action commits
+    /// daily. Set to nil to make the feed a clean no-op rather than a stream of
+    /// failed fetches.
+    static let defaultSnapshotURL = URL(string:
+        "https://raw.githubusercontent.com/Nano-AI/lake-day/main/docs/algae-snapshot.json")
 
     init(snapshotURL: URL? = AlgaeAdvisoryService.defaultSnapshotURL,
          session: URLSession = .shared) {
