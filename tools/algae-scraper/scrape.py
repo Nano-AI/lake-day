@@ -39,29 +39,57 @@ GUIDELINES = {
 }
 
 
-def find_col(headers, *candidates):
+def find_col(headers, *candidates, exclude=()):
+    """Index of the first header matching a candidate, exact match preferred.
+
+    Exact-before-substring matters: the export has both `Parameter` (the toxin
+    name) and `Toxin Concentration (ug/L)`. A pure substring pass let the
+    candidate "toxin" match the concentration column, so the toxin NAME came
+    through as a number and no reading could ever be classified danger.
+    `exclude` keeps a column already claimed by another field from being reused.
+    """
     norm = [re.sub(r"[^a-z0-9]", "", h.lower()) for h in headers]
-    for cand in candidates:
-        c = re.sub(r"[^a-z0-9]", "", cand.lower())
-        for i, h in enumerate(norm):
-            if c and (c == h or c in h):
-                return i
+    cands = [re.sub(r"[^a-z0-9]", "", c.lower()) for c in candidates]
+    for match_exact in (True, False):
+        for c in cands:
+            if not c:
+                continue
+            for i, h in enumerate(norm):
+                if i in exclude:
+                    continue
+                if (c == h) if match_exact else (c in h):
+                    return i
     return None
 
 
 def parse_value(raw):
-    """Return (float_value_or_None, is_detection). 'ND'/'' → non-detect."""
+    """Return (float_value_or_None, is_detection). 'ND'/''/'<MDL' → non-detect.
+
+    A "<0.1" result means the lab could not detect the toxin above its method
+    detection limit. That is a non-detect, not a tiny detection — counting it
+    would put a caution on clean water.
+    """
     if raw is None:
         return None, False
     s = raw.strip()
     if s == "" or s.upper() in ("ND", "NONE", "N/A", "NA", "NON-DETECT"):
         return None, False
-    below = s.startswith("<")
+    if s.startswith("<"):
+        return None, False
     m = re.search(r"[-+]?\d*\.?\d+", s.replace(",", ""))
     if not m:
         return None, False
-    v = float(m.group())
-    return (0.0 if below else v), True
+    return float(m.group()), True
+
+
+TRUTHY = {"y", "yes", "true", "t", "1"}
+
+
+def parse_exceed(raw):
+    """Ecology's own exceedance flag, when the export carries it. None if absent."""
+    if raw is None or not str(raw).strip():
+        return None
+    return str(raw).strip().lower() in TRUTHY
 
 
 def category_for(toxin, value):
@@ -84,7 +112,7 @@ def parse_date(raw):
     return None
 
 
-def rows_to_advisories(text):
+def rows_to_advisories(text, start=None, end=None):
     reader = csv.reader(io.StringIO(text))
     rows = [r for r in reader if any(c.strip() for c in r)]
     if not rows:
@@ -92,18 +120,32 @@ def rows_to_advisories(text):
         return []
     headers = rows[0]
     print("Detected columns:", headers, file=sys.stderr)
+
+    # Order matters: claim the concentration column first, then exclude it when
+    # looking for the toxin name, so the two can never collapse onto one column.
+    value_i = find_col(headers, "toxin concentration", "result value", "concentration", "result", "value")
+    taken = {value_i} if value_i is not None else set()
     ci = {
-        "site": find_col(headers, "site name", "sitename", "site", "water body", "waterbody", "lake", "name"),
-        "county": find_col(headers, "county"),
-        "date": find_col(headers, "sample date", "collection date", "sampledate", "date"),
-        "toxin": find_col(headers, "toxin", "analyte", "parameter"),
-        "value": find_col(headers, "result value", "concentration", "result", "value"),
-        "unit": find_col(headers, "unit", "units"),
-        "lat": find_col(headers, "latitude", "lat"),
-        "lon": find_col(headers, "longitude", "long", "lon"),
+        "value": value_i,
+        "site": find_col(headers, "site name", "sitename", "site", "water body", "waterbody", "lake", "name", exclude=taken),
+        "county": find_col(headers, "county", exclude=taken),
+        "date": find_col(headers, "collectdate", "sample date", "collection date", "sampledate", "date", exclude=taken),
+        "toxin": find_col(headers, "parameter", "analyte", "toxin name", "toxin", exclude=taken),
+        "unit": find_col(headers, "unit", "units", exclude=taken),
+        "exceed": find_col(headers, "exceedind", "exceed", exclude=taken),
+        "lat": find_col(headers, "latitude", "lat", exclude=taken),
+        "lon": find_col(headers, "longitude", "long", "lon", exclude=taken),
     }
+    print("Column mapping:", {k: (headers[v] if v is not None else None) for k, v in ci.items()}, file=sys.stderr)
     if ci["site"] is None or ci["toxin"] is None or ci["value"] is None:
         print("ERROR: could not locate site/toxin/value columns — headers were:", headers, file=sys.stderr)
+
+    # Unit is usually baked into the concentration header, e.g. "Toxin Concentration (ug/L)".
+    header_unit = None
+    if value_i is not None:
+        m = re.search(r"\(([^)]+)\)", headers[value_i])
+        if m:
+            header_unit = m.group(1).replace("�", "u").strip()
 
     def get(row, key):
         i = ci[key]
@@ -118,6 +160,9 @@ def rows_to_advisories(text):
 
     # Keep the most recent, highest-severity detection per (site, toxin).
     best = {}
+    dropped_stale = dropped_undated = 0
+    lo = start.isoformat() if start else None
+    hi = end.isoformat() if end else None
     for row in rows[1:]:
         value, detected = parse_value(get(row, "value"))
         if not detected:
@@ -126,6 +171,21 @@ def rows_to_advisories(text):
         site = (get(row, "site") or "").strip()
         if not site:
             continue
+
+        # The site's date pickers do not constrain the export — it returns the
+        # full multi-year archive regardless. Filter here or a 2013 reading gets
+        # published as a current advisory. No parsable date ⇒ cannot claim it is
+        # recent, so it is dropped rather than assumed fresh.
+        date = parse_date(get(row, "date"))
+        if lo and hi:
+            if date is None:
+                dropped_undated += 1
+                continue
+            if not (lo <= date <= hi):
+                dropped_stale += 1
+                continue
+
+        exceed = parse_exceed(get(row, "exceed"))
         adv = {
             "site": site,
             "county": (get(row, "county") or "").strip() or None,
@@ -133,9 +193,9 @@ def rows_to_advisories(text):
             "lon": num(row, "lon"),
             "toxin": toxin or None,
             "value": value,
-            "unit": (get(row, "unit") or "").strip() or "ug/L",
-            "category": category_for(toxin, value),
-            "date": parse_date(get(row, "date")),
+            "unit": (get(row, "unit") or "").strip() or header_unit or "ug/L",
+            "category": "danger" if exceed else category_for(toxin, value),
+            "date": date,
         }
         k = (re.sub(r"[^a-z0-9]", "", site.lower()), toxin.lower())
         prev = best.get(k)
@@ -143,6 +203,9 @@ def rows_to_advisories(text):
         if prev is None or (adv["date"] or "") > (prev["date"] or "") \
                 or rank[adv["category"]] > rank[prev["category"]]:
             best[k] = adv
+    if dropped_stale or dropped_undated:
+        print(f"Filtered out {dropped_stale} rows outside {lo}..{hi} "
+              f"and {dropped_undated} with no parsable date.", file=sys.stderr)
     return list(best.values())
 
 
@@ -193,7 +256,7 @@ def main():
 
     headless = os.environ.get("HEADLESS", "1") != "0"
     text, start, end = scrape(args.days, headless)
-    advisories = rows_to_advisories(text)
+    advisories = rows_to_advisories(text, start, end)
 
     snapshot = {
         "generated": datetime.datetime.now(datetime.timezone.utc)
