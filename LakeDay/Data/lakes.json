@@ -1,0 +1,440 @@
+{
+  "lakes": [
+    {
+      "id": "lake-washington",
+      "name": "Lake Washington",
+      "lat": 47.6205,
+      "lon": -122.2585,
+      "region": "Seattle / Eastside",
+      "usgsSiteId": null,
+      "kcBuoyId": "washington",
+      "popularity": 0.9,
+      "beaches": [
+        {
+          "name": "Enatai Beach",
+          "lat": 47.57883,
+          "lon": -122.19703,
+          "locator": "ENATAISB"
+        },
+        {
+          "name": "Gene Coulon Memorial Beach",
+          "lat": 47.50463,
+          "lon": -122.20293,
+          "locator": "0828SB"
+        },
+        {
+          "name": "Groveland Beach",
+          "lat": 47.55132,
+          "lon": -122.23442,
+          "locator": "GROVELDSB"
+        },
+        {
+          "name": "Houghton Beach",
+          "lat": 47.65962,
+          "lon": -122.20627,
+          "locator": "A422SB"
+        },
+        {
+          "name": "Juanita Beach",
+          "lat": 47.70421,
+          "lon": -122.21463,
+          "locator": "0806SB"
+        },
+        {
+          "name": "Kennydale Beach",
+          "lat": 47.5232,
+          "lon": -122.2078,
+          "locator": "KNYDALESB"
+        },
+        {
+          "name": "Luther Burbank Beach",
+          "lat": 47.58804,
+          "lon": -122.22302,
+          "locator": "SD017SB"
+        },
+        {
+          "name": "Madison Park Beach",
+          "lat": 47.6359,
+          "lon": -122.27526,
+          "locator": "0852SB"
+        },
+        {
+          "name": "Madrona Beach",
+          "lat": 47.60896,
+          "lon": -122.28137,
+          "locator": "SD007SB"
+        },
+        {
+          "name": "Magnuson Beach",
+          "lat": 47.68062,
+          "lon": -122.2454,
+          "locator": "0826SB"
+        },
+        {
+          "name": "Matthews Beach",
+          "lat": 47.69593,
+          "lon": -122.27143,
+          "locator": "0818SB"
+        },
+        {
+          "name": "Meydenbauer Bay Beach",
+          "lat": 47.61123,
+          "lon": -122.21176,
+          "locator": "0834SB"
+        },
+        {
+          "name": "Mount Baker Beach",
+          "lat": 47.58354,
+          "lon": -122.28612,
+          "locator": "0820SB"
+        },
+        {
+          "name": "Newcastle Beach",
+          "lat": 47.56561,
+          "lon": -122.19148,
+          "locator": "083930SB"
+        },
+        {
+          "name": "Pritchard Island Beach",
+          "lat": 47.52996,
+          "lon": -122.26188,
+          "locator": "4903SB"
+        },
+        {
+          "name": "Seward Park – Andrews Bay Beach",
+          "lat": 47.55154,
+          "lon": -122.25652,
+          "locator": "0813SB"
+        },
+        {
+          "name": "Waverly Beach",
+          "lat": 47.687066,
+          "lon": -122.21724,
+          "locator": "WAVRLYPSB"
+        }
+      ],
+      "hazards": [
+        "Cold below the warm surface layer, even in August",
+        "Busy boat and floatplane lanes — stay inside the swim buoys",
+        "Steep drop-offs just past the shallows at several beaches"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "boat",
+        "fish",
+        "beach"
+      ]
+    },
+    {
+      "id": "lake-sammamish",
+      "name": "Lake Sammamish",
+      "lat": 47.5893,
+      "lon": -122.0821,
+      "region": "Issaquah / Redmond",
+      "usgsSiteId": null,
+      "kcBuoyId": "sammamish",
+      "popularity": 0.7,
+      "beaches": [
+        {
+          "name": "Idylwood Beach",
+          "lat": 47.64164,
+          "lon": -122.09982,
+          "locator": "0602SB"
+        },
+        {
+          "name": "Lake Sammamish SP – Tibbets Beach",
+          "lat": 47.55684,
+          "lon": -122.07032,
+          "locator": "0615SB"
+        },
+        {
+          "name": "Sammamish Landing Beach",
+          "lat": 47.64865,
+          "lon": -122.08846,
+          "locator": "SAMMLANDINGSB"
+        }
+      ],
+      "hazards": [
+        "Cold below the surface layer even in August",
+        "Heavy boat traffic and wakes outside the swim lines on weekends",
+        "Milfoil weed beds near shore in late summer"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "boat",
+        "fish",
+        "beach"
+      ]
+    },
+    {
+      "id": "green-lake",
+      "name": "Green Lake",
+      "lat": 47.6806,
+      "lon": -122.3345,
+      "region": "Seattle",
+      "usgsSiteId": null,
+      "kcBuoyId": null,
+      "popularity": 1.0,
+      "beaches": [
+        {
+          "name": "Green Lake - East Beach",
+          "lat": 47.68039,
+          "lon": -122.32955,
+          "locator": "A734SB"
+        },
+        {
+          "name": "Green Lake - West Beach",
+          "lat": 47.68217,
+          "lon": -122.33933,
+          "locator": "A734WSB"
+        }
+      ],
+      "hazards": [
+        "History of summer toxic-algae blooms — check the advisory before you swim",
+        "Milfoil and weeds along the shallow edges",
+        "Packs out on the first warm weekend of the year"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "walk",
+        "beach"
+      ]
+    },
+    {
+      "id": "angle-lake",
+      "name": "Angle Lake",
+      "lat": 47.4225,
+      "lon": -122.2967,
+      "region": "SeaTac",
+      "usgsSiteId": null,
+      "kcBuoyId": null,
+      "popularity": 0.5,
+      "beaches": [
+        {
+          "name": "Angle Lake Beach",
+          "lat": 47.4275,
+          "lon": -122.2933,
+          "locator": "A732SB"
+        }
+      ],
+      "hazards": [
+        "Under the SeaTac flight path — steady overhead noise",
+        "Sudden drop-offs just past the swimming area",
+        "Small lake — busy with boats and jet skis on weekends"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "boat",
+        "fish",
+        "beach"
+      ]
+    },
+    {
+      "id": "beaver-lake",
+      "name": "Beaver Lake",
+      "lat": 47.58738,
+      "lon": -122.00242,
+      "region": "Sammamish",
+      "usgsSiteId": null,
+      "kcBuoyId": null,
+      "popularity": 0.4,
+      "beaches": [
+        {
+          "name": "Beaver Lake Beach",
+          "lat": 47.58738,
+          "lon": -122.00242,
+          "locator": "A709SB"
+        }
+      ],
+      "hazards": [
+        "Cool below the surface even midsummer",
+        "Weedy, shallow margins — milfoil late in the season",
+        "Small lake with limited public shoreline"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "fish",
+        "beach"
+      ]
+    },
+    {
+      "id": "echo-lake",
+      "name": "Echo Lake",
+      "lat": 47.77299,
+      "lon": -122.34007,
+      "region": "Shoreline",
+      "usgsSiteId": null,
+      "kcBuoyId": null,
+      "popularity": 0.35,
+      "beaches": [
+        {
+          "name": "Echo Lake Beach",
+          "lat": 47.77299,
+          "lon": -122.34007,
+          "locator": "A764SB"
+        }
+      ],
+      "hazards": [
+        "Small lake ringed by private shoreline — narrow public access",
+        "Weed beds near shore in late summer"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "beach"
+      ]
+    },
+    {
+      "id": "fivemile-lake",
+      "name": "Fivemile Lake",
+      "lat": 47.27141,
+      "lon": -122.28513,
+      "region": "Federal Way",
+      "usgsSiteId": null,
+      "kcBuoyId": null,
+      "popularity": 0.35,
+      "beaches": [
+        {
+          "name": "Fivemile Lake Beach",
+          "lat": 47.27141,
+          "lon": -122.28513,
+          "locator": "A735SB"
+        }
+      ],
+      "hazards": [
+        "Cool below the surface even on hot days",
+        "Weedy shallows away from the swim area",
+        "Small park beach that fills fast on summer weekends"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "fish",
+        "beach"
+      ]
+    },
+    {
+      "id": "lake-meridian",
+      "name": "Lake Meridian",
+      "lat": 47.35875,
+      "lon": -122.14556,
+      "region": "Kent",
+      "usgsSiteId": null,
+      "kcBuoyId": null,
+      "popularity": 0.5,
+      "beaches": [
+        {
+          "name": "Lake Meridian Beach",
+          "lat": 47.35875,
+          "lon": -122.14556,
+          "locator": "A728SB"
+        }
+      ],
+      "hazards": [
+        "Cold below the surface layer midsummer",
+        "Boat traffic and wakes outside the swim lines",
+        "Weedy margins in late summer"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "boat",
+        "fish",
+        "beach"
+      ]
+    },
+    {
+      "id": "lake-wilderness",
+      "name": "Lake Wilderness",
+      "lat": 47.37695,
+      "lon": -122.03859,
+      "region": "Maple Valley",
+      "usgsSiteId": null,
+      "kcBuoyId": null,
+      "popularity": 0.5,
+      "beaches": [
+        {
+          "name": "Lake Wilderness Beach",
+          "lat": 47.37695,
+          "lon": -122.03859,
+          "locator": "O717SB"
+        }
+      ],
+      "hazards": [
+        "Cool below the surface even in August",
+        "Boat traffic outside the roped swim area",
+        "Weedy, shallow edges away from the beach"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "boat",
+        "fish",
+        "beach"
+      ]
+    },
+    {
+      "id": "pine-lake",
+      "name": "Pine Lake",
+      "lat": 47.58737,
+      "lon": -122.03977,
+      "region": "Sammamish",
+      "usgsSiteId": null,
+      "kcBuoyId": null,
+      "popularity": 0.4,
+      "beaches": [
+        {
+          "name": "Pine Lake Beach",
+          "lat": 47.58737,
+          "lon": -122.03977,
+          "locator": "E708SB"
+        }
+      ],
+      "hazards": [
+        "Cool below the surface even midsummer",
+        "Weedy shallows late in the season",
+        "Small lake with limited parking on hot days"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "fish",
+        "beach"
+      ]
+    },
+    {
+      "id": "rattlesnake-lake",
+      "name": "Rattlesnake Lake",
+      "lat": 47.43391,
+      "lon": -121.7662,
+      "region": "North Bend",
+      "usgsSiteId": null,
+      "kcBuoyId": null,
+      "popularity": 0.65,
+      "beaches": [
+        {
+          "name": "Rattlesnake Lake Beach",
+          "lat": 47.43391,
+          "lon": -121.7662,
+          "locator": "A999SB"
+        }
+      ],
+      "hazards": [
+        "Cold mountain water year-round — cold-shock risk even in summer",
+        "Submerged stumps and snags below the surface",
+        "No lifeguards — swim at your own risk",
+        "Water level drops through summer, exposing rocky flats"
+      ],
+      "activities": [
+        "swim",
+        "paddle",
+        "beach"
+      ]
+    }
+  ]
+}

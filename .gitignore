@@ -1,0 +1,29 @@
+# Xcode project — generated from project.yml by xcodegen, not checked in
+LakeDay.xcodeproj/
+
+# Xcode user state / build products
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.xcresult
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Packages/
+Package.resolved
+
+# Python (tools/algae-scraper)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store

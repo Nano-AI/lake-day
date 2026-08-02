@@ -1,0 +1,45 @@
+name: algae-snapshot
+
+# Publishes docs/algae-snapshot.json from nwtoxicalgae.org so the app can fold
+# statewide toxic-algae advisories into lake safety. A real Chromium (Playwright)
+# solves the F5 bot-defense the app can't. Runs on a schedule + on demand.
+
+on:
+  schedule:
+    - cron: "0 15 * * *"   # 15:00 UTC ≈ 8am PT daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Playwright + Chromium
+        working-directory: tools/algae-scraper
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Scrape statewide algae snapshot
+        working-directory: tools/algae-scraper
+        run: python scrape.py --out ../../docs/algae-snapshot.json --days 60
+
+      - name: Commit snapshot if changed
+        run: |
+          git config user.name "algae-bot"
+          git config user.email "actions@github.com"
+          git add docs/algae-snapshot.json
+          if git diff --cached --quiet; then
+            echo "No change."
+          else
+            git commit -m "chore: refresh algae snapshot"
+            git push
+          fi

@@ -1,0 +1,52 @@
+name: LakeDay
+options:
+  bundleIdPrefix: com.adi
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+targets:
+  LakeDay:
+    type: application
+    platform: iOS
+    sources:
+      - LakeDay
+    info:
+      path: LakeDay/Info.plist
+      properties:
+        UILaunchScreen: {}
+        CFBundleDisplayName: Lake Day
+        NSLocationWhenInUseUsageDescription: Lake Day uses your location to show drive times and sort lakes by distance.
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: "77QM552BSZ"   # adi.bankoti personal team — baked in so xcodegen regen keeps signing
+        GENERATE_INFOPLIST_FILE: false
+
+  LakeDayTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - LakeDayTests
+    dependencies:
+      - target: LakeDay
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        DEVELOPMENT_TEAM: "77QM552BSZ"
+        GENERATE_INFOPLIST_FILE: "YES"
+
+schemes:
+  LakeDay:
+    build:
+      targets:
+        LakeDay: all
+    run:
+      config: Debug
+    test:
+      targets:
+        - LakeDayTests
