@@ -55,6 +55,10 @@ struct TrafficService: TrafficProviding {
         let etaMinutes: Int
     }
 
+    /// Worst believable traffic: a trip taking 4× its free-flow time. Anything
+    /// slower is a bad answer from the routing engine, not a traffic jam.
+    static let maxPlausibleRatio: Double = 4.0
+
     private func liveCongestion(from source: CLLocationCoordinate2D,
                                 to destination: CLLocationCoordinate2D) async throws -> LiveCongestion {
         let request = MKDirections.Request()
@@ -72,6 +76,18 @@ struct TrafficService: TrafficProviding {
         let mps = freeflowMph * 0.44704
         let freeflowSeconds = route.distance / mps
         let ratio = freeflowSeconds > 0 ? route.expectedTravelTime / freeflowSeconds : 1
+
+        // Sanity floor. MKDirections sometimes answers with a travel time that
+        // implies walking pace — reliably so in the Simulator, where a 15-mile
+        // drive came back as 743 minutes. Left unchecked that is not just an
+        // absurd label: the ratio also pins the congestion term at its cap, so
+        // every lake's score sags by the same bogus amount. An implausible route
+        // is no route — fall back to the calendar/weather heuristic and show no
+        // ETA, rather than publishing a number we do not believe.
+        guard ratio <= Self.maxPlausibleRatio else {
+            throw TrafficError.implausibleRoute
+        }
+
         return LiveCongestion(ratio: max(1, ratio),
                               etaMinutes: Int((route.expectedTravelTime / 60).rounded()))
     }
@@ -138,4 +154,5 @@ struct TrafficService: TrafficProviding {
 
 enum TrafficError: Error {
     case noRoute
+    case implausibleRoute
 }

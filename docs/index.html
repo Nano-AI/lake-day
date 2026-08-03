@@ -90,9 +90,23 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--cold); outline-of
 .dot{width:.55rem; height:.55rem; border-radius:50%; flex:none}
 .hint{font-size:.78rem; color:var(--muted); text-align:center; margin:.7rem 0 0}
 
+/* ── the real app ── */
+.shot{display:grid; grid-template-columns:1fr .78fr; gap:clamp(1.5rem,5vw,3.5rem); align-items:center}
+.shot figure{margin:0}
+.shot img{
+  display:block; width:100%; height:auto; border-radius:2.2rem;
+  border:1px solid var(--line); box-shadow:0 1.2rem 3rem -1rem rgba(38,66,74,.28);
+}
+@media (prefers-color-scheme:dark){.shot img{box-shadow:0 1.2rem 3rem -1rem rgba(0,0,0,.5)}}
+.shot figcaption{font-size:.8rem; color:var(--muted); margin-top:.9rem; text-align:center}
+.callouts{list-style:none; margin:0; padding:0; display:grid; gap:.65rem}
+.callouts li{position:relative; padding-left:1.5rem; font-size:.93rem; color:var(--muted)}
+.callouts li::before{content:""; position:absolute; left:0; top:.62em; width:.5rem; height:.5rem; border-radius:50%; background:var(--sun)}
+.callouts b{color:var(--text); font-weight:600}
+
 /* ── sections ── */
 section{padding:clamp(2.2rem,6vw,3.6rem) 0; border-top:1px solid var(--line)}
-section h2{font-size:clamp(1.5rem,3.6vw,2rem); margin:0 0 .5rem; font-weight:700}
+section h2{font-size:clamp(1.5rem,3.6vw,2rem); line-height:1.15; margin:0 0 .5rem; font-weight:700}
 .sub{color:var(--muted); margin:0 0 1.8rem; max-width:56ch}
 
 /* signboard legend — mirrors the county advisory board at the beach */
@@ -187,6 +201,24 @@ footer p{margin:0 0 .6rem; max-width:60ch}
 </div>
 
 <div class="wrap">
+
+  <section class="shot">
+    <div>
+      <p class="eyebrow">The list</p>
+      <h2>Every lake, ranked, with its reasons attached</h2>
+      <p class="sub">Lakes sort by score, and each card carries enough to decide without opening it. The map above them pins each lake by safety state, so a closure is visible before you read a word.</p>
+      <ul class="callouts">
+        <li><b>Safety pill first</b> — the label reads “Open”, not just a green dot, so colour is never doing the work alone.</li>
+        <li><b>Water temperature</b> from the same county sample that produced the safety call.</li>
+        <li><b>Distance</b> from where you are, with the drive time beside it once a route resolves.</li>
+        <li><b>The dial</b>, sized down to card scale — the same instrument as the detail screen.</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="img/home.png" width="1206" height="2622" alt="Lake Day's list screen: a map of King County with lakes pinned by safety state, above cards for Beaver Lake, Fivemile Lake, Pine Lake and Lake Wilderness, each showing an Open pill, water temperature, distance and a score dial.">
+      <figcaption>Live King County data, 2 August 2026 — two closures pinned in red, one algae caution in amber.</figcaption>
+    </figure>
+  </section>
 
   <section>
     <p class="eyebrow">Never a fake green</p>
