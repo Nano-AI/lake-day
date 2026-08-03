@@ -4,6 +4,8 @@ Which lake, which day. Personal iOS app for Washington lake days: live swim-beac
 
 Any other Washington lake can be added by search (MapKit). Added lakes score on the coordinate feeds — weather, air, drive time, crowds — but show water safety as "unknown", because the county bacteria program only samples King County beaches.
 
+**[nano-ai.github.io/lake-day](https://nano-ai.github.io/lake-day/)**
+
 Docs: [IDEA.md](IDEA.md) (brief) · [ARCHITECTURE.md](ARCHITECTURE.md) · [DESIGN.md](DESIGN.md) · [DATA-FEEDS.md](DATA-FEEDS.md) (verified endpoints)
 
 ## Setup (one-time)
