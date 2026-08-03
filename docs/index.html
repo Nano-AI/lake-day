@@ -4,13 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lake Day — which lake, which day</title>
-<meta name="description" content="A personal iOS app for Washington lake days: live swim-beach safety, water temp, a weather-scored rating, crowd estimate and smoke AQI. No backend, no API keys.">
+<meta name="description" content="A personal iOS app for Washington lake days. This page runs the app's real scoring against the same live feeds, in your browser.">
 <meta name="color-scheme" content="light dark">
 <style>
 :root{
   /* Pastel Nature ground + derived deeps (DESIGN.md) */
   --mist:#F2EDDC; --shallows:#D3EBE9; --paper:#BAD0DE; --tasman:#CADECD;
-  --pale-green:#DDE6CF; --gray:#EEEEEE;
   --ink:#26424A; --cold:#3A7082; --sun:#5FA07B;
   --open:#3F7D61; --caution:#A9742E; --closed:#B15140; --unknown:#74858A;
 
@@ -31,129 +30,139 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{
-  margin:0; background:var(--bg); color:var(--text);
-  font-family:var(--body); font-size:17px; line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:62rem; margin:0 auto; padding:0 var(--gut)}
-h1,h2,h3,.display{font-family:var(--display); letter-spacing:-.02em}
+body{margin:0; background:var(--bg); color:var(--text); font-family:var(--body);
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased}
+.wrap{max-width:64rem; margin:0 auto; padding:0 var(--gut)}
+h1,h2{font-family:var(--display); letter-spacing:-.02em; font-weight:700}
 a{color:var(--cold)}
-a:focus-visible,button:focus-visible{outline:2.5px solid var(--cold); outline-offset:3px; border-radius:4px}
+a:focus-visible,button:focus-visible{outline:2.5px solid var(--cold); outline-offset:3px; border-radius:6px}
+.num{font-variant-numeric:tabular-nums}
 
-/* ── eyebrow: every section is labelled by the cadence of its data ── */
-.eyebrow{
-  font-size:.72rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase;
-  color:var(--muted); margin:0 0 .6rem; display:flex; align-items:center; gap:.6rem;
-}
+.eyebrow{font-size:.72rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 .55rem; display:flex; align-items:center; gap:.6rem}
 .eyebrow::after{content:""; flex:1; height:1px; background:var(--line)}
 
-/* ── masthead ── */
-.top{display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.6rem 0}
-.mark{font-family:var(--display); font-weight:700; font-size:1.05rem; letter-spacing:-.01em; display:flex; align-items:center; gap:.5rem}
-.mark span{width:.62rem; height:.62rem; border-radius:50%; background:var(--sun); box-shadow:0 0 0 3px color-mix(in srgb,var(--sun) 22%,transparent)}
+.top{display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.5rem 0}
+.mark{font-family:var(--display); font-weight:700; font-size:1.05rem; display:flex; align-items:center; gap:.5rem}
+.mark span{width:.62rem; height:.62rem; border-radius:50%; background:var(--sun)}
 .top a{font-size:.9rem; text-decoration:none; font-weight:500}
 .top a:hover{text-decoration:underline}
 
 /* ── hero ── */
-.hero{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(1.5rem,5vw,3.5rem); align-items:center; padding:clamp(1rem,5vw,3rem) 0 clamp(2rem,6vw,4rem)}
-.hero h1{font-size:clamp(2.6rem,7vw,4.1rem); line-height:1.02; margin:.3rem 0 1rem; font-weight:700}
-.hero p{font-size:clamp(1.02rem,2.2vw,1.16rem); color:var(--muted); margin:0 0 1.5rem; max-width:34ch}
-.hero .lede{color:var(--text)}
-.hero .eyebrow::after{display:none}   /* the rule collapses when this label wraps */
-.meta{display:flex; flex-wrap:wrap; gap:.45rem}
-.chip{font-size:.8rem; font-weight:500; padding:.3rem .7rem; border-radius:999px; background:var(--shallows); color:var(--ink); border:1px solid color-mix(in srgb,var(--ink) 12%,transparent)}
-@media (prefers-color-scheme:dark){.chip{background:#2C4B55; color:var(--text)}}
+.hero{padding:clamp(.5rem,3vw,1.5rem) 0 clamp(1.5rem,5vw,2.5rem)}
+.hero h1{font-size:clamp(2.4rem,6.4vw,3.7rem); line-height:1.02; margin:.2rem 0 .8rem}
+.hero .lede{font-size:clamp(1rem,2.1vw,1.12rem); color:var(--muted); margin:0; max-width:44ch}
 
-/* ── signature: the buoy gauge ── */
-.gauge-card{background:var(--surface); border:1px solid var(--line); border-radius:1.4rem; padding:1.6rem 1.4rem 1.3rem; text-align:center}
-.gauge{width:min(15rem,72vw); height:auto; margin:0 auto; display:block}
-.tick{transform-box:fill-box; transform-origin:center; transition:fill .45s ease}
-.reading{font-family:var(--display); font-weight:700; font-variant-numeric:tabular-nums; fill:var(--text)}
-.reading-lbl{font-family:var(--body); font-size:.62rem; letter-spacing:.14em; fill:var(--muted); text-transform:uppercase}
-#slash{transition:opacity .35s ease}
-.score-line{font-family:var(--display); font-weight:700; font-size:2rem; font-variant-numeric:tabular-nums; margin:.1rem 0 0; line-height:1.1}
-.score-cap{font-size:.72rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin:0 0 .9rem}
-.verdict{font-size:.95rem; color:var(--text); margin:.9rem auto 0; max-width:26ch; min-height:3.1em}
-.stale{display:block; font-size:.78rem; color:var(--muted); margin-top:.35rem}
+/* live panel: the gauge + today's real answer */
+.panel{display:grid; grid-template-columns:auto 1fr; gap:clamp(1.2rem,4vw,2.6rem);
+  align-items:center; background:var(--surface); border:1px solid var(--line);
+  border-radius:1.4rem; padding:clamp(1.2rem,3vw,1.9rem); margin-top:clamp(1.5rem,4vw,2.2rem)}
+.gauge{width:min(13.5rem,54vw); height:auto; display:block; margin:0 auto}
+.tick{transition:stroke .4s ease}
+.reading{font-family:var(--display); font-weight:700; fill:var(--text); font-variant-numeric:tabular-nums}
+.reading-lbl{font-family:var(--body); font-size:.6rem; letter-spacing:.14em; fill:var(--muted); text-transform:uppercase}
+#slash{transition:opacity .3s ease}
+.dial-foot{text-align:center; margin:.2rem 0 0}
+.dial-foot .score{font-family:var(--display); font-weight:700; font-size:2.1rem; line-height:1.1; font-variant-numeric:tabular-nums}
+.dial-foot .cap{font-size:.68rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted)}
 
-.states{display:flex; gap:.4rem; justify-content:center; margin-top:1.1rem; flex-wrap:wrap}
-.states button{
-  font:inherit; font-size:.83rem; font-weight:500; cursor:pointer;
-  padding:.42rem .85rem; border-radius:999px; background:transparent;
-  border:1.5px solid var(--line); color:var(--muted);
-  display:inline-flex; align-items:center; gap:.42rem; transition:border-color .2s,color .2s;
-}
-.states button:hover{border-color:var(--cold); color:var(--text)}
-.states button[aria-pressed="true"]{border-color:currentColor; color:var(--text); background:color-mix(in srgb,var(--shallows) 55%,transparent)}
-@media (prefers-color-scheme:dark){.states button[aria-pressed="true"]{background:#2C4B55}}
-.dot{width:.55rem; height:.55rem; border-radius:50%; flex:none}
-.hint{font-size:.78rem; color:var(--muted); text-align:center; margin:.7rem 0 0}
+.answer{min-width:0}   /* let the rail scroll inside the grid instead of stretching it */
+.sr-status{position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap}
+.answer h2{font-size:clamp(1.25rem,2.8vw,1.7rem); line-height:1.2; margin:.1rem 0 .5rem}
+.answer .why{color:var(--muted); margin:0 0 1rem; font-size:.95rem}
+.answer .why b{color:var(--text); font-weight:600}
 
-/* ── the real app ── */
-.shot{display:grid; grid-template-columns:1fr .78fr; gap:clamp(1.5rem,5vw,3.5rem); align-items:center}
-.shot figure{margin:0}
-.shot img{
-  display:block; width:100%; height:auto; border-radius:2.2rem;
-  border:1px solid var(--line); box-shadow:0 1.2rem 3rem -1rem rgba(38,66,74,.28);
-}
-@media (prefers-color-scheme:dark){.shot img{box-shadow:0 1.2rem 3rem -1rem rgba(0,0,0,.5)}}
-.shot figcaption{font-size:.8rem; color:var(--muted); margin-top:.9rem; text-align:center}
-.callouts{list-style:none; margin:0; padding:0; display:grid; gap:.65rem}
-.callouts li{position:relative; padding-left:1.5rem; font-size:.93rem; color:var(--muted)}
-.callouts li::before{content:""; position:absolute; left:0; top:.62em; width:.5rem; height:.5rem; border-radius:50%; background:var(--sun)}
-.callouts b{color:var(--text); font-weight:600}
+/* the lake rail — every lake, real state, sorted by today's score */
+.rail{display:flex; gap:.4rem; overflow-x:auto; padding:.15rem .15rem .5rem; margin:0 -.15rem;
+  scrollbar-width:thin}
+.rail button{font:inherit; font-size:.82rem; cursor:pointer; white-space:nowrap;
+  padding:.4rem .75rem; border-radius:999px; background:transparent; color:var(--muted);
+  border:1.5px solid var(--line); display:inline-flex; align-items:center; gap:.42rem;
+  transition:border-color .18s,color .18s}
+.rail button:hover{border-color:var(--cold); color:var(--text)}
+.rail button[aria-pressed="true"]{border-color:currentColor; color:var(--text); background:var(--track)}
+.rail .dot{width:.5rem; height:.5rem; border-radius:50%; flex:none}
+.rail .n{font-variant-numeric:tabular-nums; opacity:.75; font-size:.78rem}
 
-/* ── sections ── */
-section{padding:clamp(2.2rem,6vw,3.6rem) 0; border-top:1px solid var(--line)}
-section h2{font-size:clamp(1.5rem,3.6vw,2rem); line-height:1.15; margin:0 0 .5rem; font-weight:700}
-.sub{color:var(--muted); margin:0 0 1.8rem; max-width:56ch}
+/* ── generic section ── */
+section{padding:clamp(2.2rem,6vw,3.4rem) 0; border-top:1px solid var(--line)}
+section h2{font-size:clamp(1.4rem,3.4vw,1.9rem); line-height:1.15; margin:0 0 1.2rem}
+.hint{font-size:.82rem; color:var(--muted); margin:.9rem 0 0}
 
-/* signboard legend — mirrors the county advisory board at the beach */
-.board{display:grid; grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr)); gap:.8rem}
-.state{background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--c); border-radius:.7rem; padding:.95rem 1.1rem}
-.state h3{font-size:.95rem; margin:0 0 .25rem; color:var(--c); display:flex; align-items:center; gap:.45rem; font-weight:700}
-.glyph{font-size:.9rem}
-.state p{font-size:.87rem; color:var(--muted); margin:0; line-height:1.5}
+/* ── arithmetic: the score, shown being computed ── */
+.calc{display:grid; gap:.5rem; font-size:.92rem}
+.row{display:grid; grid-template-columns:7.5rem 1fr 8.5rem; gap:.9rem; align-items:center}
+.bar{height:.6rem; border-radius:999px; background:var(--track); overflow:hidden}
+.bar i{display:block; height:100%; border-radius:999px; background:var(--sun); width:0;
+  transition:width .6s cubic-bezier(.22,1,.36,1)}
+.row .math{text-align:right; color:var(--muted); font-size:.83rem; font-variant-numeric:tabular-nums}
+.row .math b{color:var(--text); font-weight:600}
+.sum{display:grid; grid-template-columns:7.5rem 1fr 8.5rem; gap:.9rem; align-items:center;
+  border-top:1px solid var(--line); padding-top:.6rem; margin-top:.2rem; font-size:.92rem}
+.sum .math{text-align:right; font-variant-numeric:tabular-nums}
+.sum .math b{font-family:var(--display); font-size:1.05rem}
+.excluded{color:var(--unknown)}
 
-/* feeds */
-.feeds{display:grid; gap:.7rem}
-.feed{display:grid; grid-template-columns:1fr auto; gap:.4rem 1.2rem; align-items:baseline; background:var(--surface); border:1px solid var(--line); border-radius:.7rem; padding:.9rem 1.1rem}
-.feed h3{font-size:.98rem; margin:0; font-weight:600; font-family:var(--body)}
-.feed .src{grid-column:1/-1; font-size:.85rem; color:var(--muted); margin:0}
-.cadence{font-size:.68rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--cold); white-space:nowrap; font-variant-numeric:tabular-nums}
+/* ── skeletons: translucent pills that shimmer until real data lands ── */
+.skel{position:relative; overflow:hidden; border-radius:999px;
+  background:color-mix(in srgb,var(--track) 70%,transparent)}
+.skel::after{content:""; position:absolute; inset:0; transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--text) 9%,transparent),transparent);
+  animation:sweep 1.5s ease-in-out infinite}
+@keyframes sweep{to{transform:translateX(100%)}}
+.skel-line{height:.8em; margin:.35em 0}
+.skel-chip{height:2rem; width:7.5rem; flex:none}
+.skel-card{height:6.2rem; border-radius:.8rem}
+.skel-beach{height:2.6rem; border-radius:.6rem}
+.skel-pill{height:1.9rem; width:9rem}
+[hidden]{display:none!important}
 
-/* rating weights */
-.weights{display:grid; gap:.55rem; margin:0 0 1.4rem}
-.w{display:grid; grid-template-columns:8.5rem 1fr 2.8rem; gap:.85rem; align-items:center; font-size:.92rem}
-.bar{height:.62rem; border-radius:999px; background:var(--paper); overflow:hidden}
-@media (prefers-color-scheme:dark){.bar{background:#31525C}}
-.bar i{display:block; height:100%; border-radius:999px; background:var(--sun); width:var(--w); transform-origin:left; animation:grow .75s cubic-bezier(.22,1,.36,1) both}
-@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.w b{font-variant-numeric:tabular-nums; font-weight:600; text-align:right; font-family:var(--display)}
-.rule{background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--closed); border-radius:.7rem; padding:1rem 1.2rem; font-size:.93rem}
-.rule strong{color:var(--closed)}
+/* ── the app itself ── */
+.phone figure{margin:0; display:flex; flex-direction:column; align-items:center}
+.phone img{width:min(19rem,72vw); height:auto; border-radius:2rem; border:1px solid var(--line);
+  box-shadow:0 1.2rem 3rem -1rem rgba(38,66,74,.28)}
+@media (prefers-color-scheme:dark){.phone img{box-shadow:0 1.2rem 3rem -1rem rgba(0,0,0,.5)}}
+.phone figcaption{font-size:.8rem; color:var(--muted); margin-top:.85rem}
 
-/* code */
-pre{background:var(--surface); border:1px solid var(--line); border-radius:.7rem; padding:1rem 1.15rem; overflow-x:auto; font-size:.86rem; line-height:1.65; margin:0 0 1rem}
+/* ── beaches: the actual roster ── */
+.tally{display:flex; flex-wrap:wrap; gap:.5rem; margin:0 0 1.1rem}
+.pill{display:inline-flex; align-items:center; gap:.45rem; font-size:.85rem; font-weight:500;
+  padding:.34rem .8rem; border-radius:999px; border:1px solid var(--line); background:var(--surface)}
+.pill .dot{width:.55rem; height:.55rem; border-radius:50%}
+.pill .num{font-variant-numeric:tabular-nums; font-weight:700; font-family:var(--display)}
+.beaches{display:grid; grid-template-columns:repeat(auto-fill,minmax(17rem,1fr)); gap:.45rem}
+.beach{display:grid; grid-template-columns:auto 1fr auto; gap:.6rem; align-items:baseline;
+  background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--c);
+  border-radius:.6rem; padding:.6rem .8rem; font-size:.88rem}
+.beach .nm{font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.beach .t{color:var(--muted); font-variant-numeric:tabular-nums; font-size:.82rem}
+.beach .st{width:.5rem; height:.5rem; border-radius:50%; background:var(--c); align-self:center}
+.beach.is-closed .nm{color:var(--closed)}
+
+/* ── feeds: each one showing its actual payload ── */
+.feeds{display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:.6rem}
+.feed{background:var(--surface); border:1px solid var(--line); border-radius:.8rem; padding:.9rem 1.05rem}
+.feed .k{font-size:.68rem; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--muted)}
+.feed .v{font-family:var(--display); font-weight:700; font-size:1.5rem; line-height:1.25; margin:.15rem 0 .1rem;
+  font-variant-numeric:tabular-nums}
+.feed .s{font-size:.8rem; color:var(--muted); line-height:1.45}
+.feed.dead .v{color:var(--unknown)}
+
+pre{background:var(--surface); border:1px solid var(--line); border-radius:.7rem;
+  padding:1rem 1.15rem; overflow-x:auto; font-size:.86rem; line-height:1.6; margin:0}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-p code{background:var(--surface); border:1px solid var(--line); border-radius:.35rem; padding:.08em .38em; font-size:.88em}
-.note{font-size:.9rem; color:var(--muted)}
 
-footer{border-top:1px solid var(--line); padding:2.2rem 0 3rem; font-size:.87rem; color:var(--muted)}
-footer p{margin:0 0 .6rem; max-width:60ch}
+footer{border-top:1px solid var(--line); padding:2rem 0 3rem; font-size:.86rem; color:var(--muted)}
+footer p{margin:0 0 .6rem; max-width:62ch}
 .disclaim{border-left:3px solid var(--caution); padding-left:.9rem; color:var(--text)}
 
-@media (max-width:760px){
-  .hero{grid-template-columns:1fr; text-align:left}
-  .gauge-card{order:-1}
-  .w{grid-template-columns:6.6rem 1fr 2.6rem; font-size:.86rem}
-  /* the cadence label is nowrap, so stack it rather than let it push the row wide */
-  .feed{grid-template-columns:1fr; gap:.25rem}
-  .cadence{order:-1}
+@media (max-width:720px){
+  .panel{grid-template-columns:1fr}
+  .row,.sum{grid-template-columns:5.5rem 1fr; }
+  .row .math,.sum .math{grid-column:2; text-align:left; padding-top:.1rem}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important}
+  *,*::before,*::after{animation-duration:.01ms!important; transition-duration:.01ms!important}
 }
 </style>
 </head>
@@ -166,127 +175,77 @@ footer p{margin:0 0 .6rem; max-width:60ch}
   </div>
 
   <header class="hero">
-    <div>
-      <p class="eyebrow">Personal tool · Washington lakes</p>
-      <h1>Which lake,<br>which day.</h1>
-      <p class="lede">An iOS app that reads the county’s swim-beach program, the forecast and the drive, then tells you whether today is worth the trip — and says so plainly when it isn’t.</p>
-      <div class="meta">
-        <span class="chip">11 lakes · 30 beaches</span>
-        <span class="chip">SwiftUI</span>
-        <span class="chip">No backend</span>
-        <span class="chip">No API keys</span>
-      </div>
-    </div>
+    <h1>Which lake,<br>which day.</h1>
+    <p class="lede">An iOS app for Washington lake days. Everything below is the app's own scoring, running here against the same live feeds — nothing on this page is a mock-up.</p>
 
-    <div class="gauge-card">
-      <svg class="gauge" viewBox="0 0 200 200" role="img" aria-labelledby="gauge-title">
-        <title id="gauge-title">Lake day score dial</title>
-        <g id="ticks"></g>
-        <text class="reading" id="temp" x="100" y="103" text-anchor="middle" font-size="40">76°</text>
-        <text class="reading-lbl" x="100" y="122" text-anchor="middle">water</text>
-        <line id="slash" x1="52" y1="148" x2="148" y2="52" stroke="var(--unknown)" stroke-width="7" stroke-linecap="round" opacity="0"></line>
-      </svg>
-      <p class="score-line" id="score">82</p>
-      <p class="score-cap">lake day score</p>
-      <p class="verdict" id="verdict">Saturday looks like a lake day — 82° air, 76° water.<span class="stale" id="stale">Sampled Tue · 4 days ago</span></p>
-
-      <div class="states" role="group" aria-label="Beach safety state">
-        <button type="button" data-state="open" aria-pressed="true"><i class="dot" style="background:var(--open)"></i>Open</button>
-        <button type="button" data-state="caution" aria-pressed="false"><i class="dot" style="background:var(--caution)"></i>Caution</button>
-        <button type="button" data-state="closed" aria-pressed="false"><i class="dot" style="background:var(--closed)"></i>Closed</button>
+    <div class="panel">
+      <div>
+        <svg class="gauge" viewBox="0 0 200 200" role="img" aria-labelledby="gt">
+          <title id="gt">Lake day score dial</title>
+          <g id="ticks"></g>
+          <text class="reading" id="temp" x="100" y="103" text-anchor="middle" font-size="38">··</text>
+          <text class="reading-lbl" x="100" y="122" text-anchor="middle">water</text>
+          <line id="slash" x1="52" y1="148" x2="148" y2="52" stroke="var(--unknown)" stroke-width="7" stroke-linecap="round" opacity="0"></line>
+        </svg>
+        <div class="dial-foot">
+          <div class="score num" id="score">··</div>
+          <div class="cap">lake day score</div>
+        </div>
       </div>
-      <p class="hint">Illustrative — try a closure.</p>
+
+      <div class="answer">
+        <div id="answerSkel" aria-hidden="true">
+          <div class="skel skel-line" style="width:78%;height:1.5em"></div>
+          <div class="skel skel-line" style="width:52%"></div>
+        </div>
+        <h2 id="verdict" hidden></h2>
+        <p class="why" id="why" hidden></p>
+        <p class="sr-status" id="status" role="status">Reading the King County swim-beach feed, the Open-Meteo forecast and the toxic-algae snapshot.</p>
+        <div class="rail" id="rail" role="group" aria-label="Choose a lake"></div>
+      </div>
     </div>
   </header>
 </div>
 
 <div class="wrap">
 
-  <section class="shot">
-    <div>
-      <p class="eyebrow">The list</p>
-      <h2>Every lake, ranked, with its reasons attached</h2>
-      <p class="sub">Lakes sort by score, and each card carries enough to decide without opening it. The map above them pins each lake by safety state, so a closure is visible before you read a word.</p>
-      <ul class="callouts">
-        <li><b>Safety pill first</b> — the label reads “Open”, not just a green dot, so colour is never doing the work alone.</li>
-        <li><b>Water temperature</b> from the same county sample that produced the safety call.</li>
-        <li><b>Distance</b> from where you are, with the drive time beside it once a route resolves.</li>
-        <li><b>The dial</b>, sized down to card scale — the same instrument as the detail screen.</li>
-      </ul>
-    </div>
+  <section>
+    <p class="eyebrow">The score, for <span id="calcLake">this lake</span></p>
+    <h2>Nothing is hidden behind the number</h2>
+    <div class="calc" id="calc"></div>
+    <p class="hint" id="calcNote"></p>
+  </section>
+
+  <section class="phone">
+    <p class="eyebrow">The same numbers, on the phone</p>
     <figure>
-      <img src="img/home.png" width="1206" height="2622" alt="Lake Day's list screen: a map of King County with lakes pinned by safety state, above cards for Beaver Lake, Fivemile Lake, Pine Lake and Lake Wilderness, each showing an Open pill, water temperature, distance and a score dial.">
-      <figcaption>Live King County data, 2 August 2026 — two closures pinned in red, one algae caution in amber.</figcaption>
+      <img src="img/home.png" width="1206" height="2622" loading="lazy"
+           alt="Lake Day's list screen: a map of King County with lakes pinned by safety state, above cards for Beaver Lake, Fivemile Lake, Pine Lake and Lake Wilderness, each showing an Open pill, water temperature, distance and a score dial.">
+      <figcaption>Live King County data, 2 August 2026.</figcaption>
     </figure>
   </section>
 
   <section>
-    <p class="eyebrow">Never a fake green</p>
-    <h2>Four states, and one of them is “we don’t know”</h2>
-    <p class="sub">Safety is the first thing the app resolves and the only thing that can override everything else. A closure zeroes the score outright — no number, no “but the weather’s nice.” When a feed breaks, the state degrades to unknown rather than defaulting to something reassuring.</p>
-    <div class="board">
-      <div class="state" style="--c:var(--open)"><h3><span class="glyph">●</span>Open</h3><p>No advisory, and the sample behind it is recent.</p></div>
-      <div class="state" style="--c:var(--caution)"><h3><span class="glyph">▲</span>Caution</h3><p>An advisory, an algae watch, or a sample gone stale. Caps the score at 60.</p></div>
-      <div class="state" style="--c:var(--closed)"><h3><span class="glyph">✕</span>Closed</h3><p>High bacteria or a toxic-algae advisory. Score is zero and the dial slashes out.</p></div>
-      <div class="state" style="--c:var(--unknown)"><h3><span class="glyph">—</span>Unknown</h3><p>No data, or the feed didn’t answer. Shown as missing, never as safe.</p></div>
-    </div>
+    <p class="eyebrow">Every monitored beach, right now</p>
+    <h2 id="beachHead">Today at the beaches</h2>
+    <div class="tally" id="tally"></div>
+    <div class="beaches" id="beaches"></div>
   </section>
 
   <section>
-    <p class="eyebrow">Where the numbers come from</p>
-    <h2>Five feeds, all free, none of them keyed</h2>
-    <p class="sub">Everything is fetched on-device. There is no server to go down, no key to rotate, and nothing about you leaves the phone except the requests themselves.</p>
-    <div class="feeds">
-      <div class="feed">
-        <h3>Beach safety, closures, water temp</h3>
-        <p class="cadence">Weekly · sampled Mon/Tue</p>
-        <p class="src">King County ArcGIS swim-beach program — one request covers all 30 monitored beaches. Seasonal, mid-May to September.</p>
-      </div>
-      <div class="feed">
-        <h3>Seven-day forecast</h3>
-        <p class="cadence">Hourly</p>
-        <p class="src">Open-Meteo. Air temperature, sun and wind, scored per day so you can pick the day as well as the lake.</p>
-      </div>
-      <div class="feed">
-        <h3>Wildfire smoke &amp; air quality</h3>
-        <p class="cadence">Hourly</p>
-        <p class="src">Open-Meteo air quality. Surfaced as a note on the verdict rather than folded into the score — smoke is a reason to stay home, not a rating.</p>
-      </div>
-      <div class="feed">
-        <h3>Crowd estimate</h3>
-        <p class="cadence">Live</p>
-        <p class="src">Apple MapKit traffic-aware drive time against the free-flow baseline, plus a weekend and weather weighting. Always labelled an estimate, because that’s what it is — no ToS-legal real-time busyness source exists.</p>
-      </div>
-      <div class="feed">
-        <h3>News &amp; weather alerts</h3>
-        <p class="cadence">Live · cached 4h</p>
-        <p class="src">National Weather Service active alerts plus a filtered per-lake news search. Display only; it never moves the score.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <p class="eyebrow">How the score is built</p>
-    <h2>Weighted, and shown broken down</h2>
-    <p class="sub">The components are always visible on the detail screen, so a 68 can be read rather than trusted. Weights live in one constants struct — they’re tuned against real weekends, not derived from anything.</p>
-    <div class="weights">
-      <div class="w"><span>Sun + air</span><span class="bar"><i style="--w:100%"></i></span><b>40%</b></div>
-      <div class="w"><span>Water temp</span><span class="bar"><i style="--w:62.5%"></i></span><b>25%</b></div>
-      <div class="w"><span>Crowds</span><span class="bar"><i style="--w:50%"></i></span><b>20%</b></div>
-      <div class="w"><span>Wind</span><span class="bar"><i style="--w:37.5%"></i></span><b>15%</b></div>
-    </div>
-    <p class="rule"><strong>Before any of that:</strong> an active closure sets the score to zero. Weather cannot argue with a bacteria advisory.</p>
+    <p class="eyebrow">The feeds behind it</p>
+    <h2>Free, keyless, and answering right now</h2>
+    <div class="feeds" id="feeds"></div>
   </section>
 
   <section>
     <p class="eyebrow">Build it</p>
     <h2>Clone, generate, run</h2>
-    <p class="sub">The Xcode project isn’t checked in — it's generated from <code>project.yml</code>, so there’s nothing to merge-conflict over.</p>
 <pre><code>git clone https://github.com/Nano-AI/lake-day.git
 cd lake-day
 brew install xcodegen &amp;&amp; xcodegen
 open LakeDay.xcodeproj</code></pre>
-    <p class="note">Pick the LakeDay scheme and an iPhone simulator. For a real phone, set your team under Signing &amp; Capabilities — a free Apple ID works, and re-signs weekly. Tests cover the rating curves, the safety hard-zero and the feed parsers.</p>
+    <p class="hint">The Xcode project is generated from <code>project.yml</code>, so it isn’t checked in. Tests cover the rating curves, the safety hard-zero and the feed parsers.</p>
   </section>
 
 </div>
@@ -300,75 +259,385 @@ open LakeDay.xcodeproj</code></pre>
 
 <script>
 (function(){
-  var TICKS = 40, R = 78, CX = 100, CY = 100;
-  var g = document.getElementById('ticks');
-  var ns = 'http://www.w3.org/2000/svg';
-  var nodes = [];
+"use strict";
+const $ = s => document.querySelector(s);
+const RAW = "https://raw.githubusercontent.com/Nano-AI/lake-day/main/";
 
-  // A ring of discrete segments, banded like a mooring buoy rather than a
-  // smooth progress arc — the app's dial reads as an instrument, not a donut.
-  for (var i = 0; i < TICKS; i++){
-    var a = (i / TICKS) * Math.PI * 2 - Math.PI / 2;
-    var inner = R - 9, outer = R + 5;
-    var t = document.createElementNS(ns, 'line');
-    t.setAttribute('x1', CX + Math.cos(a) * inner); t.setAttribute('y1', CY + Math.sin(a) * inner);
-    t.setAttribute('x2', CX + Math.cos(a) * outer); t.setAttribute('y2', CY + Math.sin(a) * outer);
-    t.setAttribute('stroke-width', '5'); t.setAttribute('stroke-linecap', 'round');
-    t.setAttribute('class', 'tick');
-    t.setAttribute('stroke', 'var(--track)');
-    g.appendChild(t); nodes.push(t);
+/* ─────────── RatingEngine, ported from Scoring/RatingEngine.swift ───────────
+   Same weights, same curves, same caps. If you change one, change both.      */
+const W = {sunAir:0.40, water:0.25, crowds:0.20, wind:0.15};
+const clamp01 = x => Math.max(0, Math.min(1, x));
+
+const airTempScore = t =>
+  (t <= 68 || t >= 95) ? 0 :
+  (t >= 80 && t <= 88) ? 1 :
+  (t < 80) ? clamp01((t - 68) / 12) : clamp01((95 - t) / 7);
+
+const sunAirScore = f =>
+  clamp01(airTempScore(f.highF) - (f.cloud/100)*0.35 - (f.precip/100)*0.50);
+
+const waterScore = t =>
+  t < 50 ? 0 :
+  t < 60 ? (t-50)/10*0.2 :
+  t < 65 ? 0.2 + (t-60)/5*0.3 :
+  t < 66 ? 0.5 :
+  t < 72 ? 0.5 + (t-66)/6*0.4 :
+  t < 73 ? 0.9 + (t-72)*0.1 : 1;
+
+const windScore = m => m <= 5 ? 1 : m >= 18 ? 0 : clamp01(1 - (m-5)/13);
+
+function score(safety, waterF, f, crowdValue){
+  if (safety.level === "closed") return {total:null, closed:true, reason:safety.reason, parts:[]};
+
+  const parts = [
+    {kind:"Sun + air", norm:sunAirScore(f),        w:W.sunAir},
+    {kind:"Crowds",    norm:clamp01(1-crowdValue), w:W.crowds},
+    {kind:"Wind",      norm:windScore(f.windMph),  w:W.wind}
+  ];
+  // Water is the only component that can be missing; its weight is redistributed.
+  if (waterF != null) parts.push({kind:"Water temp", norm:waterScore(waterF), w:W.water});
+  const wsum = parts.reduce((a,p) => a + p.w, 0);
+
+  let total01 = 0;
+  for (const p of parts){ p.eff = wsum > 0 ? p.w/wsum : 0; p.contrib = p.norm*p.eff; total01 += p.contrib; }
+
+  let total = Math.round(total01*100);
+  if (safety.level === "caution") total = Math.min(total, 60);   // caution cap
+  total = Math.max(0, Math.min(100, total));
+
+  const order = ["Sun + air","Water temp","Crowds","Wind"];
+  parts.sort((a,b) => order.indexOf(a.kind) - order.indexOf(b.kind));
+  return {total, closed:false, parts, missingWater: waterF == null};
+}
+
+function verdictFor(s, safety, f, waterF){
+  const day = new Date(f.date+"T12:00:00").toLocaleDateString("en-US",{weekday:"long"});
+  const air = Math.round(f.highF);
+  const wp = waterF != null ? Math.round(waterF)+"° water" : "no water reading";
+  if (s.closed) return "Skip it — " + (s.reason || "active closure").replace(/^./,c=>c.toLowerCase()) + ".";
+  if (safety.level === "caution"){
+    const r = safety.reason || "advisory in effect";
+    return r.replace(/^./,c=>c.toUpperCase()) + ". " +
+      (s.total >= 45 ? `${day} could still work — ${air}° air, ${wp}.` : `not a great ${day}.`);
+  }
+  const t = s.total;
+  if (t >= 80) return `${day} looks like a lake day — ${air}° air, ${wp}.`;
+  if (t >= 65) return `${day} works — ${air}° air, ${wp}.`;
+  if (t >= 45){
+    const lim = s.parts.slice().sort((a,b)=>a.norm-b.norm)[0];
+    if (lim && lim.kind === "Water temp" && waterF != null && waterF < 66)
+      return `Swimmable but cool — ${Math.round(waterF)}° water, ${air}° air.`;
+    if (lim && lim.kind === "Wind") return `Breezy — ${Math.round(f.windMph)} mph wind, ${air}° air.`;
+    return `Decent ${day} — ${air}° air, ${wp}.`;
+  }
+  if (t >= 25){
+    if (waterF != null && waterF < 60) return `Cold water — ${Math.round(waterF)}° — better for a walk than a swim.`;
+    return `Marginal — ${air}° air, ${wp}.`;
+  }
+  return `Skip the swim — ${air}° air, ${wp}.`;
+}
+
+/* ─── Crowd proxy, from Data/Feeds/TrafficService.swift (heuristic half only:
+       MapKit drive times need the device, so the live congestion term is out) ─ */
+function crowdValue(f, popularity){
+  const d = new Date(f.date+"T12:00:00"), wd = d.getDay();
+  const base = (wd === 0 || wd === 6) ? 0.45 : 0.20;
+  const warm = clamp01((f.highF-62)/20), dry = clamp01(1-f.precip/100), clear = clamp01(1-f.cloud/100);
+  const goodness = clamp01(warm*0.6 + dry*0.25 + clear*0.15);
+  const pop = popularity == null ? 0.6 : clamp01(popularity);
+  return clamp01((base + goodness*0.35) * (0.6 + pop*0.6));
+}
+
+/* ─── King County status mapping, from Data/Feeds/KingCountyBeachService.swift ─ */
+function mapStatus(raw, sampledAt){
+  const s = (raw||"").trim().toLowerCase();
+  if (s === "ok to swim (low bacteria)"){
+    if (sampledAt && (Date.now() - sampledAt) > 10*86400e3)
+      return {level:"caution", reason:"Sample is over 10 days old", sampledAt};
+    return {level:"open", reason:null, sampledAt};
+  }
+  if (s === "stay out of the water") return {level:"closed", reason:"High bacteria", sampledAt};
+  return {level:"unknown", reason:null, sampledAt};
+}
+const RANK = {unknown:0, open:1, caution:2, closed:3};
+const COLOR = {open:"var(--open)", caution:"var(--caution)", closed:"var(--closed)", unknown:"var(--unknown)"};
+
+/* ─── Algae matching, from Data/Feeds/AlgaeAdvisoryService.swift ─── */
+const norm = s => (s||"").toLowerCase().replace(/lake|pond|reservoir|lagoon|slough/g," ").replace(/[^a-z0-9]/g,"");
+function algaeFor(advisories, lake){
+  const t = norm(lake.name);
+  if (t.length < 4) return null;
+  const hits = advisories.filter(a => { const n = norm(a.site); return n.length >= 4 && (n.includes(t) || t.includes(n)); });
+  if (!hits.length) return null;
+  const top = hits.sort((a,b) => (b.category==="danger") - (a.category==="danger"))[0];
+  return {level: top.category === "danger" ? "closed" : "caution",
+          reason: "Toxic algae advisory — " + top.toxin, sampledAt: Date.parse(top.date)};
+}
+
+/* ─────────────────────────── gauge ─────────────────────────── */
+const TICKS = 40, NS = "http://www.w3.org/2000/svg";
+const nodes = [];
+(function buildDial(){
+  const g = $("#ticks");
+  for (let i=0;i<TICKS;i++){
+    const a = i/TICKS*Math.PI*2 - Math.PI/2;
+    const l = document.createElementNS(NS,"line");
+    l.setAttribute("x1", 100+Math.cos(a)*69); l.setAttribute("y1", 100+Math.sin(a)*69);
+    l.setAttribute("x2", 100+Math.cos(a)*83); l.setAttribute("y2", 100+Math.sin(a)*83);
+    l.setAttribute("stroke-width","5"); l.setAttribute("stroke-linecap","round");
+    l.setAttribute("stroke","var(--track)"); l.setAttribute("class","tick");
+    g.appendChild(l); nodes.push(l);
+  }
+})();
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let dialTimers = [];
+function paintDial(total, color, animate){
+  dialTimers.forEach(clearTimeout); dialTimers = [];
+  const filled = total == null ? 0 : Math.round(total/100*TICKS);
+  nodes.forEach((n,i) => {
+    const on = i < filled;
+    const go = () => n.setAttribute("stroke", on ? color : "var(--track)");
+    if (animate && !reduce) dialTimers.push(setTimeout(go, i*12)); else go();
+  });
+}
+
+/* ─────────────────────────── state ─────────────────────────── */
+const S = {lakes:[], byId:{}, selected:null, kcAgeText:"", failed:[]};
+
+function fmtDay(ms){
+  if (!ms) return "";
+  const d = Math.round((Date.now()-ms)/86400e3);
+  if (d <= 0) return "today";
+  if (d === 1) return "yesterday";
+  return d + " days ago";
+}
+
+/* Skeletons stand in for each block until its feed answers, so the page never
+   shows an empty frame and never shows a number it doesn't have yet. */
+function mountSkeletons(){
+  const rep = (n, html) => Array.from({length:n}, () => html).join("");
+  $("#rail").innerHTML = rep(5, `<div class="skel skel-chip"></div>`);
+  $("#calc").innerHTML = rep(4, `<div class="row"><span class="skel skel-line" style="width:5.5rem"></span>
+      <span class="skel" style="height:.6rem"></span><span class="skel skel-line" style="width:100%"></span></div>`);
+  $("#tally").innerHTML = rep(3, `<div class="skel skel-pill"></div>`);
+  $("#beaches").innerHTML = rep(12, `<div class="skel skel-beach"></div>`);
+  $("#feeds").innerHTML = rep(4, `<div class="skel skel-card"></div>`);
+}
+
+function revealAnswer(){
+  const s = $("#answerSkel"); if (s) s.remove();
+  $("#verdict").hidden = false; $("#why").hidden = false;
+}
+
+async function boot(){
+  mountSkeletons();
+  const kcURL = "https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/" +
+                "Swim_beach_temperature_view/FeatureServer/0/query?where=1=1&outFields=*&f=geojson";
+  const get = (u, label) => fetch(u).then(r => { if(!r.ok) throw new Error(label); return r.json(); })
+                                    .catch(e => { S.failed.push(label); return null; });
+
+  const [meta, kc, algae] = await Promise.all([
+    get(RAW+"LakeDay/Data/lakes.json","lakes"),
+    get(kcURL,"King County"),
+    get(RAW+"docs/algae-snapshot.json","algae")
+  ]);
+
+  if (!meta){ fail("Couldn’t reach the lake list on GitHub."); return; }
+  const lakes = meta.lakes;
+
+  /* beaches by locator */
+  const beaches = {};
+  if (kc) for (const f of (kc.features||[])){
+    const p = f.properties || {};
+    const loc = (p.locator||"").toUpperCase(); if (!loc) continue;
+    beaches[loc] = {
+      name: p.siteName || p.Beach || loc,
+      status: mapStatus(p.Beach_Status, p.SampleTimestamp || null),
+      tempF: typeof p.WaterTempF === "number" ? p.WaterTempF : null,
+      water: p.Water_Body || ""
+    };
   }
 
-  var STATES = {
-    open:    {score:82, temp:'76°', color:'var(--sun)',
-              verdict:'Saturday looks like a lake day — 82° air, 76° water.',
-              stale:'Sampled Tue · 4 days ago'},
-    caution: {score:60, temp:'71°', color:'var(--caution)',
-              verdict:'Swimmable, but the last sample is 12 days old. Score capped at 60.',
-              stale:'Sampled Jul 21 · stale for the season'},
-    closed:  {score:null, temp:'—', color:'var(--unknown)',
-              verdict:'Skip it — high bacteria, closed since Thursday.',
-              stale:'King County advisory · still active'}
-  };
+  /* forecast for all lakes in one request */
+  const lat = lakes.map(l=>l.lat).join(","), lon = lakes.map(l=>l.lon).join(",");
+  const fc = await get("https://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+lon+
+    "&daily=temperature_2m_max,wind_speed_10m_max,precipitation_probability_max,cloud_cover_mean"+
+    "&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FLos_Angeles&forecast_days=1","forecast");
+  const aq = await get("https://air-quality-api.open-meteo.com/v1/air-quality?latitude="+lat+"&longitude="+lon+
+    "&current=us_aqi&timezone=America%2FLos_Angeles","air quality");
 
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var current = 'open', timers = [];
+  const adv = (algae && algae.advisories) || [];
 
-  function render(key, animate){
-    var s = STATES[key];
-    timers.forEach(clearTimeout); timers = [];
-    var filled = s.score === null ? 0 : Math.round(s.score / 100 * TICKS);
+  lakes.forEach((lake, i) => {
+    /* lake safety = worst beach, then folded with any algae advisory */
+    let safety = {level:"unknown", reason:null, sampledAt:null}, temps = [], mine = [];
+    for (const b of (lake.beaches||[])){
+      const rec = beaches[(b.locator||"").toUpperCase()];
+      if (!rec) continue;
+      mine.push(rec);
+      if (RANK[rec.status.level] > RANK[safety.level]) safety = rec.status;
+      if (rec.tempF != null) temps.push(rec.tempF);
+    }
+    const a = algaeFor(adv, lake);
+    if (a && RANK[a.level] > RANK[safety.level]) safety = a;
 
-    nodes.forEach(function(n, i){
-      var on = i < filled;
-      var paint = function(){ n.setAttribute('stroke', on ? s.color : 'var(--track)'); };
-      if (animate && !reduce) timers.push(setTimeout(paint, i * 14)); else paint();
-    });
+    temps.sort((x,y)=>x-y);
+    const waterF = temps.length ? (temps.length%2 ? temps[(temps.length-1)/2]
+                    : (temps[temps.length/2-1]+temps[temps.length/2])/2) : null;
 
-    document.getElementById('temp').textContent = s.temp;
-    document.getElementById('score').textContent = s.score === null ? '—' : s.score;
-    document.getElementById('verdict').firstChild.nodeValue = s.verdict;
-    document.getElementById('stale').textContent = s.stale;
-    document.getElementById('slash').setAttribute('opacity', s.score === null ? '1' : '0');
-    document.getElementById('score').style.color = s.score === null ? 'var(--unknown)' : '';
-  }
+    const d = fc && fc[i] && fc[i].daily;
+    const f = d ? {date:d.time[0], highF:d.temperature_2m_max[0], windMph:d.wind_speed_10m_max[0],
+                   precip:d.precipitation_probability_max[0] ?? 0, cloud:d.cloud_cover_mean[0] ?? 0} : null;
 
-  document.querySelectorAll('.states button').forEach(function(b){
-    b.addEventListener('click', function(){
-      current = b.dataset.state;
-      document.querySelectorAll('.states button').forEach(function(o){
-        o.setAttribute('aria-pressed', String(o === b));
-      });
-      render(current, true);
-    });
+    const crowd = f ? crowdValue(f, lake.popularity) : null;
+    const sc = f ? score(safety, waterF, f, crowd) : null;
+
+    S.byId[lake.id] = {lake, safety, waterF, f, crowd, sc, beaches:mine,
+                       aqi: aq && aq[i] && aq[i].current ? aq[i].current.us_aqi : null,
+                       verdict: sc && f ? verdictFor(sc, safety, f, waterF) : null};
+    S.lakes.push(lake.id);
   });
 
-  render('open', false);
-  // One orchestrated moment: the dial sweeps in on load, nothing else moves.
-  if (!reduce) {
-    nodes.forEach(function(n){ n.setAttribute('stroke', 'var(--track)'); });
-    setTimeout(function(){ render('open', true); }, 220);
+  /* rank: scoreable lakes first, closures last */
+  S.lakes.sort((x,y) => {
+    const a = S.byId[x], b = S.byId[y];
+    const av = a.sc && a.sc.total != null ? a.sc.total : -1;
+    const bv = b.sc && b.sc.total != null ? b.sc.total : -1;
+    return bv - av;
+  });
+
+  renderRail(); select(S.lakes[0]); renderBeaches(beaches); renderFeeds(kc, fc, aq, algae, beaches);
+}
+
+function fail(msg){
+  revealAnswer();
+  $("#rail").innerHTML = "";
+  $("#verdict").textContent = msg;
+  $("#why").textContent = "Nothing is shown as safe when a feed can’t be reached — the app behaves the same way.";
+  $("#status").textContent = msg;
+}
+
+function renderRail(){
+  const rail = $("#rail"); rail.innerHTML = "";
+  for (const id of S.lakes){
+    const e = S.byId[id];
+    const b = document.createElement("button");
+    b.type = "button"; b.dataset.id = id; b.setAttribute("aria-pressed","false");
+    b.innerHTML = `<i class="dot" style="background:${COLOR[e.safety.level]}"></i>` +
+                  e.lake.name.replace("Lake ","") +
+                  `<span class="n">${e.sc && e.sc.total != null ? e.sc.total : "—"}</span>`;
+    b.addEventListener("click", () => select(id));
+    rail.appendChild(b);
   }
+}
+
+function select(id){
+  S.selected = id;
+  revealAnswer();
+  const e = S.byId[id];
+  document.querySelectorAll("#rail button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.id === id)));
+
+  const closed = e.sc && e.sc.closed;
+  const color = closed ? "var(--unknown)" : COLOR[e.safety.level] === COLOR.caution ? "var(--caution)" : "var(--sun)";
+
+  $("#temp").textContent = e.waterF != null && !closed ? Math.round(e.waterF)+"°" : "—";
+  $("#score").textContent = e.sc && e.sc.total != null ? e.sc.total : "—";
+  $("#score").style.color = closed ? "var(--unknown)" : "";
+  $("#slash").setAttribute("opacity", closed ? "1" : "0");
+  paintDial(e.sc ? e.sc.total : null, color, true);
+
+  $("#verdict").textContent = e.verdict || "No forecast for this lake right now.";
+  $("#status").textContent = e.lake.name + ": " + (e.verdict || "no forecast");
+  $("#calcLake").textContent = e.lake.name;
+
+  const bits = [];
+  bits.push(`<b>${e.lake.name}</b>, ${e.lake.region}`);
+  if (e.safety.sampledAt) bits.push(`sampled ${fmtDay(e.safety.sampledAt)}`);
+  if (e.beaches.length) bits.push(`${e.beaches.length} monitored beach${e.beaches.length>1?"es":""}`);
+  if (e.aqi != null) bits.push(`AQI ${Math.round(e.aqi)}`);
+  $("#why").innerHTML = bits.join(" · ");
+
+  renderCalc(e);
+}
+
+function renderCalc(e){
+  const box = $("#calc"), note = $("#calcNote");
+  if (!e.sc){ box.innerHTML = ""; note.textContent = "No forecast available for this lake."; return; }
+
+  if (e.sc.closed){
+    box.innerHTML = `<div class="row"><span>Every component</span>
+      <span class="bar"><i style="width:0"></i></span>
+      <span class="math excluded">excluded</span></div>
+      <div class="sum"><span>Score</span><span></span><span class="math"><b>—</b></span></div>`;
+    note.textContent = "Closed water is never scored. The weather was fine; it does not get a vote.";
+    return;
+  }
+
+  box.innerHTML = e.sc.parts.map(p => `
+    <div class="row">
+      <span>${p.kind}</span>
+      <span class="bar"><i data-w="${(p.norm*100).toFixed(0)}"></i></span>
+      <span class="math">${p.norm.toFixed(2)} × ${p.eff.toFixed(2)} = <b>${(p.contrib*100).toFixed(0)}</b></span>
+    </div>`).join("") +
+    `<div class="sum"><span>Score</span><span></span><span class="math">
+       ${e.sc.parts.map(p=>(p.contrib*100).toFixed(0)).join(" + ")} = <b>${e.sc.total}</b></span></div>`;
+
+  requestAnimationFrame(() =>
+    box.querySelectorAll(".bar i").forEach(i => i.style.width = i.dataset.w + "%"));
+
+  const notes = [];
+  if (e.sc.missingWater) notes.push("No water reading here, so water’s 0.25 is redistributed across the other three — that’s why the weights aren’t 0.40 / 0.25 / 0.20 / 0.15.");
+  if (e.safety.level === "caution") notes.push("Caution caps the total at 60.");
+  notes.push("Crowds are the calendar-and-weather half of the estimate; the drive-time half needs MapKit on a device.");
+  note.textContent = notes.join(" ");
+}
+
+function renderBeaches(beaches){
+  const list = Object.values(beaches);
+  if (!list.length){
+    $("#beachHead").textContent = "The county feed didn’t answer";
+    $("#tally").innerHTML = "";
+    $("#beaches").innerHTML = `<p class="hint">No beach shows as safe when the feed is unreachable.</p>`;
+    return;
+  }
+  const count = {open:0, caution:0, closed:0, unknown:0};
+  list.forEach(b => count[b.status.level]++);
+  const label = {open:"OK to swim", caution:"Caution", closed:"Stay out of the water", unknown:"Not monitored"};
+  $("#tally").innerHTML = ["closed","caution","open","unknown"].filter(k=>count[k]).map(k =>
+    `<span class="pill"><i class="dot" style="background:${COLOR[k]}"></i>
+      <span class="num">${count[k]}</span> ${label[k]}</span>`).join("");
+
+  list.sort((a,b) => RANK[b.status.level]-RANK[a.status.level] || a.name.localeCompare(b.name));
+  $("#beaches").innerHTML = list.map(b => `
+    <div class="beach ${b.status.level==="closed"?"is-closed":""}" style="--c:${COLOR[b.status.level]}">
+      <i class="st"></i>
+      <span class="nm" title="${b.name}">${b.name}</span>
+      <span class="t">${b.tempF != null ? Math.round(b.tempF)+"°" : "—"}</span>
+    </div>`).join("");
+}
+
+function renderFeeds(kc, fc, aq, algae, beaches){
+  const sel = S.byId[S.selected];
+  const n = Object.keys(beaches).length;
+  const newest = Math.max(0, ...Object.values(beaches).map(b => b.status.sampledAt || 0));
+  const dangers = algae ? (algae.advisories||[]).filter(a=>a.category==="danger").length : null;
+
+  const cards = [
+    kc ? {k:"King County swim beaches", v:n+" beaches", s:"Bacteria, closures and water temperature in one request. Newest sample "+fmtDay(newest)+"."}
+       : {k:"King County swim beaches", v:"unknown", s:"The feed didn’t answer. Nothing is shown as safe.", dead:1},
+    fc && sel && sel.f ? {k:"Open-Meteo forecast", v:Math.round(sel.f.highF)+"° high", s:Math.round(sel.f.windMph)+" mph wind · "+Math.round(sel.f.cloud)+"% cloud · "+Math.round(sel.f.precip)+"% rain, at "+sel.lake.name+"."}
+       : {k:"Open-Meteo forecast", v:"unknown", s:"No forecast returned.", dead:1},
+    aq && sel && sel.aqi != null ? {k:"Air quality", v:"AQI "+Math.round(sel.aqi), s:(sel.aqi >= 101 ? "Unhealthy for sensitive groups — the app notes this on the verdict." : "Clear enough to leave off the verdict.")+" Never a score input."}
+       : {k:"Air quality", v:"unknown", s:"No reading returned.", dead:1},
+    algae ? {k:"Toxic algae, statewide", v:(algae.advisories||[]).length+" advisories", s:dangers+" over the state guideline. Scraped daily from nwtoxicalgae.org, "+(algae.window? "window "+algae.window.start+" → "+algae.window.end : "")+"."}
+       : {k:"Toxic algae, statewide", v:"unknown", s:"Snapshot unreachable.", dead:1}
+  ];
+  $("#feeds").innerHTML = cards.map(c =>
+    `<div class="feed ${c.dead?"dead":""}"><div class="k">${c.k}</div><div class="v">${c.v}</div><div class="s">${c.s}</div></div>`).join("");
+}
+
+boot().catch(() => fail("Something went wrong reading the feeds."));
 })();
 </script>
 </body>
