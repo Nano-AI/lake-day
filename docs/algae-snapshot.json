@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-05T16:43:49Z",
+  "generated": "2026-08-08T15:32:04Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-06",
-    "end": "2026-08-05"
+    "start": "2026-06-09",
+    "end": "2026-08-08"
   },
   "advisories": [
     {
@@ -12,10 +12,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 1.6,
+      "value": 0.3,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-07-27"
+      "date": "2026-08-03"
     },
     {
       "site": "Rufus Woods Lake",
@@ -117,15 +117,26 @@
       "date": "2026-06-29"
     },
     {
+      "site": "Lake Wilderness Beach",
+      "county": "King",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 89.1,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-03"
+    },
+    {
       "site": "Horsethief Lake",
       "county": "Klickitat",
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 49.2,
+      "value": 71.4,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-07-28"
+      "date": "2026-08-03"
     },
     {
       "site": "Look Lake",
@@ -155,10 +166,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Anatoxin-a",
-      "value": 0.044,
+      "value": 0.049,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-07-20"
+      "date": "2026-08-03"
     },
     {
       "site": "Rowland Lake",
@@ -188,10 +199,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 70.7,
+      "value": 29.3,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-07-14"
+      "date": "2026-08-04"
     },
     {
       "site": "Palmer Lake",
@@ -214,6 +225,50 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-07-27"
+    },
+    {
+      "site": "Pass Lake",
+      "county": "Skagit",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 5.5,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-04"
+    },
+    {
+      "site": "Pass Lake",
+      "county": "Skagit",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.5,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-04"
+    },
+    {
+      "site": "Lake Tyee",
+      "county": "Skagit",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.8,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-05"
+    },
+    {
+      "site": "West Medical Lake",
+      "county": "Spokane",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 8.3,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-07-29"
     },
     {
       "site": "Lake Lawrence",
