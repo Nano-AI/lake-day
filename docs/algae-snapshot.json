@@ -1,11 +1,22 @@
 {
-  "generated": "2026-08-12T16:00:27Z",
+  "generated": "2026-08-13T16:00:46Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-13",
-    "end": "2026-08-12"
+    "start": "2026-06-14",
+    "end": "2026-08-13"
   },
   "advisories": [
+    {
+      "site": "Vancouver Lake",
+      "county": "Clark",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 0.015,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-10"
+    },
     {
       "site": "Vancouver Lake",
       "county": "Clark",
@@ -49,6 +60,28 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-07-21"
+    },
+    {
+      "site": "Lone Lake",
+      "county": "Island",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 10.3,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-10"
+    },
+    {
+      "site": "Lone Lake",
+      "county": "Island",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 22.3,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-10"
     },
     {
       "site": "Lake Sammamish Beach",
@@ -154,22 +187,22 @@
       "county": "Klickitat",
       "lat": null,
       "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 0.049,
+      "toxin": "Microcystin",
+      "value": 17.3,
       "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-03"
+      "category": "danger",
+      "date": "2026-07-15"
     },
     {
       "site": "Rowland Lake",
       "county": "Klickitat",
       "lat": null,
       "lon": null,
-      "toxin": "Microcystin",
-      "value": 17.3,
+      "toxin": "Anatoxin-a",
+      "value": 0.049,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-07-15"
+      "category": "caution",
+      "date": "2026-08-03"
     },
     {
       "site": "Ohop Lake",
@@ -210,10 +243,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 5.9,
+      "value": 13.5,
       "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-07-27"
+      "category": "danger",
+      "date": "2026-08-10"
     },
     {
       "site": "Pass Lake",
