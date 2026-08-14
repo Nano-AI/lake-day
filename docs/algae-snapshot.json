@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-13T16:00:46Z",
+  "generated": "2026-08-14T15:54:00Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-14",
-    "end": "2026-08-13"
+    "start": "2026-06-15",
+    "end": "2026-08-14"
   },
   "advisories": [
     {
@@ -368,6 +368,28 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-07-22"
+    },
+    {
+      "site": "Toad Lake",
+      "county": "Whatcom",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 0.014,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-11"
+    },
+    {
+      "site": "Toad Lake",
+      "county": "Whatcom",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 2.4,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-11"
     }
   ]
 }
