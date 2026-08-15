@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-14T15:54:00Z",
+  "generated": "2026-08-15T15:22:26Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-15",
-    "end": "2026-08-14"
+    "start": "2026-06-16",
+    "end": "2026-08-15"
   },
   "advisories": [
     {
@@ -95,17 +95,6 @@
       "date": "2026-06-30"
     },
     {
-      "site": "Mount Baker Beach",
-      "county": "King",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.331,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-06-15"
-    },
-    {
       "site": "Echo Lake Beach",
       "county": "King",
       "lat": null,
@@ -126,6 +115,17 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-06-22"
+    },
+    {
+      "site": "Haller Lake",
+      "county": "King",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 0.02,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-13"
     },
     {
       "site": "Lake Marcel",
@@ -254,10 +254,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Anatoxin-a",
-      "value": 5.5,
+      "value": 9.8,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-08-04"
+      "date": "2026-08-12"
     },
     {
       "site": "Pass Lake",
@@ -265,10 +265,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 0.5,
+      "value": 0.4,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-08-04"
+      "date": "2026-08-12"
     },
     {
       "site": "Lake Tyee",
@@ -280,6 +280,17 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-05"
+    },
+    {
+      "site": "Newman Lake",
+      "county": "Spokane",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 2.8,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-12"
     },
     {
       "site": "West Medical Lake",
@@ -315,17 +326,6 @@
       "date": "2026-07-27"
     },
     {
-      "site": "Offutt Lake",
-      "county": "Thurston",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.45,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-06-15"
-    },
-    {
       "site": "Pattison Lake",
       "county": "Thurston",
       "lat": null,
@@ -346,6 +346,17 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-07-14"
+    },
+    {
+      "site": "Bennington Lake",
+      "county": "Walla Walla",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 0.039,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-11"
     },
     {
       "site": "Reed Lake",
