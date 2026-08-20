@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-19T15:35:17Z",
+  "generated": "2026-08-20T15:35:20Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-20",
-    "end": "2026-08-19"
+    "start": "2026-06-21",
+    "end": "2026-08-20"
   },
   "advisories": [
     {
@@ -45,10 +45,21 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 1.4,
+      "value": 0.3,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-07-27"
+      "date": "2026-08-17"
+    },
+    {
+      "site": "Moses Lake-BH Park",
+      "county": "Grant",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 965.0,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-17"
     },
     {
       "site": "Cranberry Lake",
@@ -82,6 +93,17 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-08-10"
+    },
+    {
+      "site": "Crocker Lake",
+      "county": "Jefferson",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.7,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-17"
     },
     {
       "site": "Lake Sammamish Beach",
@@ -150,15 +172,26 @@
       "date": "2026-08-03"
     },
     {
+      "site": "Ronald Bog",
+      "county": "King",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.5,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-17"
+    },
+    {
       "site": "Horsethief Lake",
       "county": "Klickitat",
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 71.4,
+      "value": 42.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-08-03"
+      "date": "2026-08-17"
     },
     {
       "site": "Look Lake",
@@ -205,6 +238,17 @@
       "date": "2026-08-03"
     },
     {
+      "site": "Harts Lake",
+      "county": "Pierce",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 3.9,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-17"
+    },
+    {
       "site": "Ohop Lake",
       "county": "Pierce",
       "lat": null,
@@ -238,15 +282,48 @@
       "date": "2026-07-14"
     },
     {
+      "site": "Silver Lake",
+      "county": "Pierce",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 2.4,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-17"
+    },
+    {
       "site": "Spanaway Lake",
       "county": "Pierce",
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 13.5,
+      "value": 88.8,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-08-10"
+      "date": "2026-08-17"
+    },
+    {
+      "site": "Tanwax Lake",
+      "county": "Pierce",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 69.9,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-17"
+    },
+    {
+      "site": "Wapato Lake",
+      "county": "Pierce",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 68.2,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-17"
     },
     {
       "site": "Pass Lake",
@@ -254,10 +331,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Anatoxin-a",
-      "value": 9.8,
+      "value": 11.3,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-08-12"
+      "date": "2026-08-17"
     },
     {
       "site": "Pass Lake",
