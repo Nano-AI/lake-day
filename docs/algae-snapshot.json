@@ -1,11 +1,22 @@
 {
-  "generated": "2026-08-20T15:35:20Z",
+  "generated": "2026-08-21T15:35:27Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-21",
-    "end": "2026-08-20"
+    "start": "2026-06-22",
+    "end": "2026-08-21"
   },
   "advisories": [
+    {
+      "site": "Snake River - Chief Looking Glass Park",
+      "county": "Asotin",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 1.2,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-13"
+    },
     {
       "site": "Vancouver Lake",
       "county": "Clark",
@@ -326,6 +337,17 @@
       "date": "2026-08-17"
     },
     {
+      "site": "Egg Lake",
+      "county": "San Juan",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.4,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-18"
+    },
+    {
       "site": "Pass Lake",
       "county": "Skagit",
       "lat": null,
@@ -462,6 +484,17 @@
       "county": "Whatcom",
       "lat": null,
       "lon": null,
+      "toxin": "Microcystin",
+      "value": 18.4,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-18"
+    },
+    {
+      "site": "Toad Lake",
+      "county": "Whatcom",
+      "lat": null,
+      "lon": null,
       "toxin": "Anatoxin-a",
       "value": 0.014,
       "unit": "ug/L",
@@ -469,15 +502,15 @@
       "date": "2026-08-11"
     },
     {
-      "site": "Toad Lake",
-      "county": "Whatcom",
+      "site": "Snake River",
+      "county": "Whitman",
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 2.4,
+      "value": 2.3,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-08-11"
+      "date": "2026-08-18"
     }
   ]
 }
