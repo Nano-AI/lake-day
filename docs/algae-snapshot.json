@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-21T15:35:27Z",
+  "generated": "2026-08-22T15:23:03Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-22",
-    "end": "2026-08-21"
+    "start": "2026-06-23",
+    "end": "2026-08-22"
   },
   "advisories": [
     {
@@ -137,17 +137,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-07-27"
-    },
-    {
-      "site": "Burien Lake",
-      "county": "King",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 1.8,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-06-22"
     },
     {
       "site": "Haller Lake",
