@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-24T15:41:00Z",
+  "generated": "2026-08-25T15:44:09Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-25",
-    "end": "2026-08-24"
+    "start": "2026-06-26",
+    "end": "2026-08-25"
   },
   "advisories": [
     {
@@ -500,6 +500,17 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-18"
+    },
+    {
+      "site": "Yakima Greenway South Pond",
+      "county": "Yakima",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 0.162,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-19"
     }
   ]
 }
