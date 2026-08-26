@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-25T15:44:09Z",
+  "generated": "2026-08-26T16:19:16Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-26",
-    "end": "2026-08-25"
+    "start": "2026-06-27",
+    "end": "2026-08-26"
   },
   "advisories": [
     {
@@ -38,6 +38,17 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-03"
+    },
+    {
+      "site": "Rufus Woods Lake",
+      "county": "Douglas",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.4,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-19"
     },
     {
       "site": "Rufus Woods Lake",
@@ -375,10 +386,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 2.8,
+      "value": 2.2,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-08-12"
+      "date": "2026-08-20"
     },
     {
       "site": "West Medical Lake",
