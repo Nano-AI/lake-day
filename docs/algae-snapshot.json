@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-26T16:19:16Z",
+  "generated": "2026-08-28T00:17:24Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-27",
-    "end": "2026-08-26"
+    "start": "2026-06-29",
+    "end": "2026-08-28"
   },
   "advisories": [
     {
@@ -18,15 +18,26 @@
       "date": "2026-08-13"
     },
     {
+      "site": "Howard Amon Park (Columbia River)",
+      "county": "Benton",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 645.0,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-24"
+    },
+    {
       "site": "Vancouver Lake",
       "county": "Clark",
       "lat": null,
       "lon": null,
       "toxin": "Anatoxin-a",
-      "value": 0.015,
+      "value": 0.028,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-08-10"
+      "date": "2026-08-24"
     },
     {
       "site": "Vancouver Lake",
@@ -122,10 +133,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 0.7,
+      "value": 0.4,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-08-17"
+      "date": "2026-08-24"
     },
     {
       "site": "Lake Sammamish Beach",
@@ -199,10 +210,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 42.0,
+      "value": 472.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-08-17"
+      "date": "2026-08-24"
     },
     {
       "site": "Look Lake",
@@ -232,10 +243,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 17.3,
+      "value": 8.9,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-07-15"
+      "date": "2026-08-24"
     },
     {
       "site": "Rowland Lake",
@@ -265,10 +276,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 5.0,
+      "value": 74.3,
       "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-07-20"
+      "category": "danger",
+      "date": "2026-08-24"
     },
     {
       "site": "Palmer Lake",
@@ -335,6 +346,17 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-08-17"
+    },
+    {
+      "site": "Lake Whitman",
+      "county": "Pierce",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 9.3,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-08-24"
     },
     {
       "site": "Egg Lake",
