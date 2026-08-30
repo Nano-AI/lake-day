@@ -1,9 +1,9 @@
 {
-  "generated": "2026-08-29T18:13:50Z",
+  "generated": "2026-08-30T18:28:55Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-06-30",
-    "end": "2026-08-29"
+    "start": "2026-07-01",
+    "end": "2026-08-30"
   },
   "advisories": [
     {
@@ -137,17 +137,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-24"
-    },
-    {
-      "site": "Lake Sammamish Beach",
-      "county": "King",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 0.015,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-06-30"
     },
     {
       "site": "Echo Lake Beach",
