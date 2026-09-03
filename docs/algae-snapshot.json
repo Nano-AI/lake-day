@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-02T18:28:35Z",
+  "generated": "2026-09-03T18:24:11Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-07-04",
-    "end": "2026-09-02"
+    "start": "2026-07-05",
+    "end": "2026-09-03"
   },
   "advisories": [
     {
@@ -205,6 +205,17 @@
       "date": "2026-08-17"
     },
     {
+      "site": "Fiorito Pond",
+      "county": "Kittitas",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.6,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-08-31"
+    },
+    {
       "site": "Horsethief Lake",
       "county": "Klickitat",
       "lat": null,
@@ -320,10 +331,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 88.8,
+      "value": 99.4,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-08-17"
+      "date": "2026-08-31"
     },
     {
       "site": "Tanwax Lake",
@@ -528,21 +539,21 @@
       "county": "Whatcom",
       "lat": null,
       "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 0.01,
+      "toxin": "Microcystin",
+      "value": 54.7,
       "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-25"
+      "category": "danger",
+      "date": "2026-09-01"
     },
     {
       "site": "Toad Lake",
       "county": "Whatcom",
       "lat": null,
       "lon": null,
-      "toxin": "Microcystin",
-      "value": 32.4,
+      "toxin": "Anatoxin-a",
+      "value": 0.01,
       "unit": "ug/L",
-      "category": "danger",
+      "category": "caution",
       "date": "2026-08-25"
     },
     {
