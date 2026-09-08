@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-07T19:02:05Z",
+  "generated": "2026-09-08T18:23:23Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-07-09",
-    "end": "2026-09-07"
+    "start": "2026-07-10",
+    "end": "2026-09-08"
   },
   "advisories": [
     {
@@ -60,17 +60,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-19"
-    },
-    {
-      "site": "Rufus Woods Lake",
-      "county": "Douglas",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 28.6,
-      "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-07-09"
     },
     {
       "site": "Sagemoor Pond",
