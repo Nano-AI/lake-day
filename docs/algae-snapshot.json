@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-14T19:45:14Z",
+  "generated": "2026-09-15T18:45:10Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-07-16",
-    "end": "2026-09-14"
+    "start": "2026-07-17",
+    "end": "2026-09-15"
   },
   "advisories": [
     {
@@ -489,17 +489,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-08-25"
-    },
-    {
-      "site": "Reed Lake",
-      "county": "Whatcom",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 1.7,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-07-16"
     },
     {
       "site": "Lake Samish",
