@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-16T18:44:25Z",
+  "generated": "2026-09-17T18:51:34Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-07-18",
-    "end": "2026-09-16"
+    "start": "2026-07-19",
+    "end": "2026-09-17"
   },
   "advisories": [
     {
@@ -38,6 +38,17 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-08"
+    },
+    {
+      "site": "Round Lake",
+      "county": "Clark",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 6.6,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-09-14"
     },
     {
       "site": "Vancouver Lake",
@@ -205,6 +216,17 @@
       "date": "2026-08-17"
     },
     {
+      "site": "Green Lake (East Beach)",
+      "county": "King",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 1.59,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-09-14"
+    },
+    {
       "site": "Fiorito Pond",
       "county": "Kittitas",
       "lat": null,
@@ -260,15 +282,26 @@
       "date": "2026-09-08"
     },
     {
+      "site": "Seabreeze Lake",
+      "county": "Pacific",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 28.2,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-09-14"
+    },
+    {
       "site": "Bay Lake",
       "county": "Pierce",
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 0.6,
+      "value": 5.8,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-08-25"
+      "date": "2026-09-14"
     },
     {
       "site": "Harts Lake",
@@ -320,10 +353,21 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 99.4,
+      "value": 717.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-08-31"
+      "date": "2026-09-09"
+    },
+    {
+      "site": "Steilacoom Lake",
+      "county": "Pierce",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 561.0,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-09-10"
     },
     {
       "site": "Tanwax Lake",
@@ -414,6 +458,28 @@
       "date": "2026-08-05"
     },
     {
+      "site": "Lake Ballinger",
+      "county": "Snohomish",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.4,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-09-14"
+    },
+    {
+      "site": "Lost Lake",
+      "county": "Snohomish",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 43.5,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-09-09"
+    },
+    {
       "site": "Newman Lake",
       "county": "Spokane",
       "lat": null,
@@ -445,6 +511,17 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-25"
+    },
+    {
+      "site": "Lake Lawrence",
+      "county": "Thurston",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 0.012,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-09-14"
     },
     {
       "site": "Lake Lawrence",
