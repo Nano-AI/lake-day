@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-18T18:07:55Z",
+  "generated": "2026-09-20T18:04:05Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-07-20",
-    "end": "2026-09-18"
+    "start": "2026-07-22",
+    "end": "2026-09-20"
   },
   "advisories": [
     {
@@ -430,10 +430,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Anatoxin-a",
-      "value": 13.6,
+      "value": 59.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-08"
+      "date": "2026-09-15"
     },
     {
       "site": "Pass Lake",
@@ -529,10 +529,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 9.7,
+      "value": 2.6,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-07-21"
+      "category": "caution",
+      "date": "2026-09-14"
     },
     {
       "site": "Long Lake",
