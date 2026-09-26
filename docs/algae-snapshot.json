@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-24T18:51:58Z",
+  "generated": "2026-09-26T18:24:54Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-07-26",
-    "end": "2026-09-24"
+    "start": "2026-07-28",
+    "end": "2026-09-26"
   },
   "advisories": [
     {
@@ -45,10 +45,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 6.6,
+      "value": 4.7,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-09-14"
+      "date": "2026-09-21"
     },
     {
       "site": "Vancouver Lake",
@@ -106,6 +106,17 @@
       "date": "2026-08-17"
     },
     {
+      "site": "Connelly Park (Moses Lake)",
+      "county": "Grant",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 120.0,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-09-22"
+    },
+    {
       "site": "Moses Lake South",
       "county": "Grant",
       "lat": null,
@@ -115,6 +126,17 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
+    },
+    {
+      "site": "Duck Lake",
+      "county": "Grays Harbor",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.9,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-09-21"
     },
     {
       "site": "Cranberry Lake",
@@ -166,10 +188,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 9.7,
+      "value": 0.3,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-07-27"
+      "category": "caution",
+      "date": "2026-08-03"
     },
     {
       "site": "Haller Lake",
@@ -181,17 +203,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-26"
-    },
-    {
-      "site": "Lake Marcel",
-      "county": "King",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 1.2,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-07-26"
     },
     {
       "site": "Lake Morton",
@@ -232,7 +243,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 2.88,
+      "value": 2.07,
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-09-21"
@@ -276,10 +287,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Anatoxin-a",
-      "value": 0.047,
+      "value": 0.011,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-09-08"
+      "date": "2026-09-22"
     },
     {
       "site": "Rowland Lake",
@@ -309,10 +320,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 5.8,
+      "value": 3.8,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-09-14"
+      "date": "2026-09-22"
     },
     {
       "site": "Harts Lake",
@@ -353,10 +364,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 2.4,
+      "value": 6.8,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-08-17"
+      "date": "2026-09-21"
     },
     {
       "site": "Spanaway Lake",
@@ -364,10 +375,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 717.0,
+      "value": 247.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-09"
+      "date": "2026-09-21"
     },
     {
       "site": "Steilacoom Lake",
@@ -441,10 +452,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Anatoxin-a",
-      "value": 59.0,
+      "value": 289.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-15"
+      "date": "2026-09-21"
     },
     {
       "site": "Pass Lake",
@@ -452,10 +463,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 105.0,
+      "value": 155.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-15"
+      "date": "2026-09-21"
     },
     {
       "site": "Lake Tyee",
@@ -502,6 +513,17 @@
       "date": "2026-08-20"
     },
     {
+      "site": "Lake Spokane",
+      "county": "Spokane",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.6,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-09-23"
+    },
+    {
       "site": "West Medical Lake",
       "county": "Spokane",
       "lat": null,
@@ -518,10 +540,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 77.0,
+      "value": 155.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-16"
+      "date": "2026-09-22"
     },
     {
       "site": "Deep Lake",
@@ -539,6 +561,17 @@
       "county": "Thurston",
       "lat": null,
       "lon": null,
+      "toxin": "Microcystin",
+      "value": 43.7,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-09-22"
+    },
+    {
+      "site": "Lake Lawrence",
+      "county": "Thurston",
+      "lat": null,
+      "lon": null,
       "toxin": "Anatoxin-a",
       "value": 0.012,
       "unit": "ug/L",
@@ -546,37 +579,15 @@
       "date": "2026-09-14"
     },
     {
-      "site": "Lake Lawrence",
-      "county": "Thurston",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 2.6,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-09-14"
-    },
-    {
-      "site": "Long Lake",
-      "county": "Thurston",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 5.6,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-07-27"
-    },
-    {
       "site": "Offutt Lake",
       "county": "Thurston",
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 10.5,
+      "value": 26.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-16"
+      "date": "2026-09-22"
     },
     {
       "site": "Bennington Lake",
@@ -606,10 +617,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 13.9,
+      "value": 19.2,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-15"
+      "date": "2026-09-21"
     },
     {
       "site": "Toad Lake",
