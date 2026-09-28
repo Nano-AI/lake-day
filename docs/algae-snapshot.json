@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-27T18:55:52Z",
+  "generated": "2026-09-28T21:07:02Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-07-29",
-    "end": "2026-09-27"
+    "start": "2026-07-30",
+    "end": "2026-09-28"
   },
   "advisories": [
     {
@@ -518,10 +518,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 8.3,
+      "value": 7.1,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-07-29"
+      "category": "caution",
+      "date": "2026-08-13"
     },
     {
       "site": "Clear Lake",
