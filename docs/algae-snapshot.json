@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-29T19:51:33Z",
+  "generated": "2026-09-30T19:53:14Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-07-31",
-    "end": "2026-09-29"
+    "start": "2026-08-01",
+    "end": "2026-09-30"
   },
   "advisories": [
     {
@@ -122,7 +122,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 294.0,
+      "value": 758.0,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
@@ -181,6 +181,17 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-24"
+    },
+    {
+      "site": "Green Lake (Duck Island Launch)",
+      "county": "King",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 1.72,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-09-28"
     },
     {
       "site": "Echo Lake Beach",
