@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-30T19:53:14Z",
+  "generated": "2026-10-01T20:11:30Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-01",
-    "end": "2026-09-30"
+    "start": "2026-08-02",
+    "end": "2026-10-01"
   },
   "advisories": [
     {
@@ -199,10 +199,21 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 0.3,
+      "value": 2.5,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-08-03"
+      "date": "2026-09-28"
+    },
+    {
+      "site": "Cottage Lake",
+      "county": "King",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 12.2,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-09-28"
     },
     {
       "site": "Haller Lake",
@@ -232,10 +243,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 16.3,
+      "value": 87.2,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-08"
+      "date": "2026-09-28"
     },
     {
       "site": "Ronald Bog",
@@ -364,10 +375,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 6.8,
+      "value": 2.8,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-09-21"
+      "date": "2026-09-28"
     },
     {
       "site": "Spanaway Lake",
@@ -540,10 +551,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 155.0,
+      "value": 178.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-22"
+      "date": "2026-09-28"
     },
     {
       "site": "Deep Lake",
@@ -584,10 +595,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 26.0,
+      "value": 8.6,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-22"
+      "date": "2026-09-28"
     },
     {
       "site": "Bennington Lake",
