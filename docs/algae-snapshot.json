@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-01T20:11:30Z",
+  "generated": "2026-10-02T19:48:08Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-02",
-    "end": "2026-10-01"
+    "start": "2026-08-03",
+    "end": "2026-10-02"
   },
   "advisories": [
     {
@@ -133,10 +133,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 0.9,
+      "value": 6.0,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-09-21"
+      "date": "2026-09-29"
     },
     {
       "site": "Cranberry Lake",
@@ -386,10 +386,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 247.0,
+      "value": 346.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-21"
+      "date": "2026-09-28"
     },
     {
       "site": "Steilacoom Lake",
