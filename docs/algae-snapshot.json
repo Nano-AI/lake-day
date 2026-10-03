@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-02T19:48:08Z",
+  "generated": "2026-10-03T18:34:54Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-03",
-    "end": "2026-10-02"
+    "start": "2026-08-04",
+    "end": "2026-10-03"
   },
   "advisories": [
     {
@@ -60,17 +60,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-24"
-    },
-    {
-      "site": "Vancouver Lake",
-      "county": "Clark",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.3,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-03"
     },
     {
       "site": "Rufus Woods Lake",
