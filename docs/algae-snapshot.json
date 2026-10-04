@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-03T18:34:54Z",
+  "generated": "2026-10-04T18:33:48Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-04",
-    "end": "2026-10-03"
+    "start": "2026-08-05",
+    "end": "2026-10-04"
   },
   "advisories": [
     {
@@ -111,7 +111,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 758.0,
+      "value": 294.0,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
@@ -346,17 +346,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-08-24"
-    },
-    {
-      "site": "Palmer Lake",
-      "county": "Pierce",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 29.3,
-      "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-08-04"
     },
     {
       "site": "Silver Lake",
