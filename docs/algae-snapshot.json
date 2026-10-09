@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-08T20:32:48Z",
+  "generated": "2026-10-09T20:01:08Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-09",
-    "end": "2026-10-08"
+    "start": "2026-08-10",
+    "end": "2026-10-09"
   },
   "advisories": [
     {
@@ -122,7 +122,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 294.0,
+      "value": 758.0,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
@@ -155,10 +155,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Anatoxin-a",
-      "value": 10.3,
+      "value": 14.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-08-10"
+      "date": "2026-10-05"
     },
     {
       "site": "Lone Lake",
@@ -610,6 +610,17 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-11"
+    },
+    {
+      "site": "Casey Pond",
+      "county": "Walla Walla",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 7.4,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-10-06"
     },
     {
       "site": "McNary Slough",
