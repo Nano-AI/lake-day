@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-10T19:09:16Z",
+  "generated": "2026-10-11T19:23:30Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-11",
-    "end": "2026-10-10"
+    "start": "2026-08-12",
+    "end": "2026-10-11"
   },
   "advisories": [
     {
@@ -599,17 +599,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-10-05"
-    },
-    {
-      "site": "Bennington Lake",
-      "county": "Walla Walla",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 0.039,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-11"
     },
     {
       "site": "Casey Pond",
