@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-16T18:40:23Z",
+  "generated": "2026-10-17T17:47:21Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-17",
-    "end": "2026-10-16"
+    "start": "2026-08-18",
+    "end": "2026-10-17"
   },
   "advisories": [
     {
@@ -73,28 +73,6 @@
       "date": "2026-08-19"
     },
     {
-      "site": "Sagemoor Pond",
-      "county": "Franklin",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.3,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-17"
-    },
-    {
-      "site": "Moses Lake-BH Park",
-      "county": "Grant",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 965.0,
-      "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-08-17"
-    },
-    {
       "site": "Connelly Park (Moses Lake)",
       "county": "Grant",
       "lat": null,
@@ -111,7 +89,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 758.0,
+      "value": 294.0,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
@@ -238,17 +216,6 @@
       "date": "2026-09-28"
     },
     {
-      "site": "Ronald Bog",
-      "county": "King",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.5,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-17"
-    },
-    {
       "site": "Green Lake (East Beach)",
       "county": "King",
       "lat": null,
@@ -258,17 +225,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-09-21"
-    },
-    {
-      "site": "Lake Wilderness",
-      "county": "King",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 4.0,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-10-12"
     },
     {
       "site": "Fiorito Pond",
@@ -337,17 +293,6 @@
       "date": "2026-10-13"
     },
     {
-      "site": "Harts Lake",
-      "county": "Pierce",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 3.9,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-17"
-    },
-    {
       "site": "Ohop Lake",
       "county": "Pierce",
       "lat": null,
@@ -397,10 +342,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 69.9,
+      "value": 0.9,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-08-17"
+      "category": "caution",
+      "date": "2026-10-13"
     },
     {
       "site": "Wapato Lake",
@@ -408,10 +353,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 68.2,
+      "value": 3.0,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-08-17"
+      "category": "caution",
+      "date": "2026-10-01"
     },
     {
       "site": "Lake Whitman",
@@ -562,10 +507,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 43.7,
+      "value": 417.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-22"
+      "date": "2026-10-14"
     },
     {
       "site": "Lake Lawrence",
@@ -584,10 +529,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 8.4,
+      "value": 191.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-10-05"
+      "date": "2026-10-14"
     },
     {
       "site": "Pattison Lake",
