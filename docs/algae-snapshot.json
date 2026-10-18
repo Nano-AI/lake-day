@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-17T17:47:21Z",
+  "generated": "2026-10-18T17:52:40Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-18",
-    "end": "2026-10-17"
+    "start": "2026-08-19",
+    "end": "2026-10-18"
   },
   "advisories": [
     {
@@ -89,7 +89,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 294.0,
+      "value": 758.0,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
@@ -370,17 +370,6 @@
       "date": "2026-08-24"
     },
     {
-      "site": "Egg Lake",
-      "county": "San Juan",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.4,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-18"
-    },
-    {
       "site": "Lake Campbell",
       "county": "Skagit",
       "lat": null,
@@ -599,17 +588,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-25"
-    },
-    {
-      "site": "Snake River",
-      "county": "Whitman",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 2.3,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-18"
     },
     {
       "site": "Yakima Greenway South Pond",
