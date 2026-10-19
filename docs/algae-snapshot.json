@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-18T17:52:40Z",
+  "generated": "2026-10-19T20:25:17Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-19",
-    "end": "2026-10-18"
+    "start": "2026-08-20",
+    "end": "2026-10-19"
   },
   "advisories": [
     {
@@ -60,17 +60,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-24"
-    },
-    {
-      "site": "Rufus Woods Lake",
-      "county": "Douglas",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.4,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-19"
     },
     {
       "site": "Connelly Park (Moses Lake)",
@@ -588,17 +577,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-25"
-    },
-    {
-      "site": "Yakima Greenway South Pond",
-      "county": "Yakima",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 0.162,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-19"
     }
   ]
 }
