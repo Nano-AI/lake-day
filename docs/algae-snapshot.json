@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-19T20:25:17Z",
+  "generated": "2026-10-20T19:00:37Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-20",
-    "end": "2026-10-19"
+    "start": "2026-08-21",
+    "end": "2026-10-20"
   },
   "advisories": [
     {
@@ -210,7 +210,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 2.88,
+      "value": 2.07,
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-09-21"
@@ -423,17 +423,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-10-05"
-    },
-    {
-      "site": "Newman Lake",
-      "county": "Spokane",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 2.2,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-20"
     },
     {
       "site": "Lake Spokane",
