@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-20T19:00:37Z",
+  "generated": "2026-10-22T19:04:49Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-21",
-    "end": "2026-10-20"
+    "start": "2026-08-23",
+    "end": "2026-10-22"
   },
   "advisories": [
     {
@@ -34,10 +34,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 5.9,
+      "value": 7.5,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-10-12"
+      "date": "2026-10-19"
     },
     {
       "site": "Round Lake",
@@ -45,10 +45,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 3.8,
+      "value": 0.4,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-10-12"
+      "date": "2026-10-19"
     },
     {
       "site": "Vancouver Lake",
@@ -199,10 +199,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 87.2,
+      "value": 370.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-09-28"
+      "date": "2026-10-18"
     },
     {
       "site": "Green Lake (East Beach)",
@@ -210,7 +210,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 2.07,
+      "value": 2.88,
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-09-21"
@@ -403,6 +403,28 @@
       "date": "2026-09-14"
     },
     {
+      "site": "Lake Loma",
+      "county": "Snohomish",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 1.03,
+      "unit": "ug/L",
+      "category": "danger",
+      "date": "2026-10-19"
+    },
+    {
+      "site": "Lake Loma",
+      "county": "Snohomish",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.4,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-10-19"
+    },
+    {
       "site": "Lost Lake",
       "county": "Snohomish",
       "lat": null,
@@ -474,10 +496,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 417.0,
+      "value": 10.1,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-10-14"
+      "date": "2026-10-19"
     },
     {
       "site": "Lake Lawrence",
@@ -496,10 +518,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 191.0,
+      "value": 259.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-10-14"
+      "date": "2026-10-19"
     },
     {
       "site": "Pattison Lake",
@@ -507,10 +529,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 135.0,
+      "value": 45.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-10-12"
+      "date": "2026-10-19"
     },
     {
       "site": "Casey Pond",
