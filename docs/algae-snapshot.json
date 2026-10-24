@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-23T18:54:51Z",
+  "generated": "2026-10-24T17:56:05Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-24",
-    "end": "2026-10-23"
+    "start": "2026-08-25",
+    "end": "2026-10-24"
   },
   "advisories": [
     {
@@ -49,17 +49,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-10-19"
-    },
-    {
-      "site": "Vancouver Lake",
-      "county": "Clark",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 0.028,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-24"
     },
     {
       "site": "Connelly Park (Moses Lake)",
@@ -126,17 +115,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
-    },
-    {
-      "site": "Crocker Lake",
-      "county": "Jefferson",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.4,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-24"
     },
     {
       "site": "Green Lake (Duck Island Launch)",
@@ -232,10 +210,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 472.0,
+      "value": 0.4,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-08-24"
+      "category": "caution",
+      "date": "2026-09-22"
     },
     {
       "site": "Rowland Lake",
@@ -348,17 +326,6 @@
       "date": "2026-10-01"
     },
     {
-      "site": "Lake Whitman",
-      "county": "Pierce",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 9.3,
-      "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-08-24"
-    },
-    {
       "site": "Lake Campbell",
       "county": "Skagit",
       "lat": null,
@@ -436,15 +403,37 @@
       "date": "2026-09-09"
     },
     {
+      "site": "Picnic Point Lake",
+      "county": "Snohomish",
+      "lat": null,
+      "lon": null,
+      "toxin": "Anatoxin-a",
+      "value": 0.08,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-10-20"
+    },
+    {
+      "site": "Picnic Point Lake",
+      "county": "Snohomish",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.3,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-10-20"
+    },
+    {
       "site": "Sunday Lake",
       "county": "Snohomish",
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 1.1,
+      "value": 0.4,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-10-05"
+      "date": "2026-10-19"
     },
     {
       "site": "Lake Spokane",
@@ -485,10 +474,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 0.8,
+      "value": 0.6,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-08-25"
+      "date": "2026-10-21"
     },
     {
       "site": "Lake Lawrence",
