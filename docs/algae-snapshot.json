@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-24T17:56:05Z",
+  "generated": "2026-10-25T18:14:05Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-25",
-    "end": "2026-10-24"
+    "start": "2026-08-26",
+    "end": "2026-10-25"
   },
   "advisories": [
     {
@@ -67,7 +67,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 294.0,
+      "value": 758.0,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
@@ -159,17 +159,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-08-26"
-    },
-    {
-      "site": "Lake Morton",
-      "county": "King",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.9,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-25"
     },
     {
       "site": "Lake Wilderness Beach",
@@ -540,10 +529,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 101.0,
+      "value": 1.2,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-08-25"
+      "category": "caution",
+      "date": "2026-10-12"
     },
     {
       "site": "Toad Lake",
@@ -555,28 +544,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-21"
-    },
-    {
-      "site": "Toad Lake",
-      "county": "Whatcom",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 0.01,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-25"
-    },
-    {
-      "site": "Lower Granite Reservoir",
-      "county": "Whitman",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.3,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-25"
     }
   ]
 }
