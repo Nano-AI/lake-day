@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-25T18:14:05Z",
+  "generated": "2026-10-26T20:31:56Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-26",
-    "end": "2026-10-25"
+    "start": "2026-08-27",
+    "end": "2026-10-26"
   },
   "advisories": [
     {
@@ -148,17 +148,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-28"
-    },
-    {
-      "site": "Haller Lake",
-      "county": "King",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 0.017,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-08-26"
     },
     {
       "site": "Lake Wilderness Beach",
