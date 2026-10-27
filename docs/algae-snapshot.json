@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-26T20:31:56Z",
+  "generated": "2026-10-27T19:53:43Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-27",
-    "end": "2026-10-26"
+    "start": "2026-08-28",
+    "end": "2026-10-27"
   },
   "advisories": [
     {
@@ -67,7 +67,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 758.0,
+      "value": 294.0,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
