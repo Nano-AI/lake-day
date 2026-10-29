@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-28T20:07:35Z",
+  "generated": "2026-10-29T20:06:05Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-08-29",
-    "end": "2026-10-28"
+    "start": "2026-08-30",
+    "end": "2026-10-29"
   },
   "advisories": [
     {
@@ -45,10 +45,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 0.4,
+      "value": 5.2,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-10-19"
+      "date": "2026-10-26"
     },
     {
       "site": "Connelly Park (Moses Lake)",
@@ -67,7 +67,7 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 294.0,
+      "value": 758.0,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-09-14"
@@ -172,6 +172,17 @@
       "date": "2026-09-21"
     },
     {
+      "site": "Lake Wilderness",
+      "county": "King",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.5,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-10-27"
+    },
+    {
       "site": "Fiorito Pond",
       "county": "Kittitas",
       "lat": null,
@@ -265,10 +276,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 37.0,
+      "value": 8.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-10-12"
+      "date": "2026-10-27"
     },
     {
       "site": "Steilacoom Lake",
@@ -496,10 +507,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 45.0,
+      "value": 401.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-10-19"
+      "date": "2026-10-27"
     },
     {
       "site": "Casey Pond",
