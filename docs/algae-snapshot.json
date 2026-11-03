@@ -1,9 +1,9 @@
 {
-  "generated": "2026-11-02T23:00:46Z",
+  "generated": "2026-11-03T20:48:41Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-09-03",
-    "end": "2026-11-02"
+    "start": "2026-09-04",
+    "end": "2026-11-03"
   },
   "advisories": [
     {
@@ -302,17 +302,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-10-01"
-    },
-    {
-      "site": "Lake Campbell",
-      "county": "Skagit",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 0.3,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-09-03"
     },
     {
       "site": "Pass Lake",
