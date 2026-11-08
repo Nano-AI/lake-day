@@ -1,33 +1,11 @@
 {
-  "generated": "2026-11-07T19:16:42Z",
+  "generated": "2026-11-08T19:23:31Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-09-08",
-    "end": "2026-11-07"
+    "start": "2026-09-09",
+    "end": "2026-11-08"
   },
   "advisories": [
-    {
-      "site": "Howard Amon Park (Columbia River)",
-      "county": "Benton",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 16.1,
-      "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-09-08"
-    },
-    {
-      "site": "Leslie Groves Park (Columbia River)",
-      "county": "Benton",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 28.0,
-      "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-09-08"
-    },
     {
       "site": "Lacamas Lake",
       "county": "Clark",
@@ -82,17 +60,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-09-29"
-    },
-    {
-      "site": "Cranberry Lake",
-      "county": "Island",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 7.4,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-09-08"
     },
     {
       "site": "Lone Lake",
@@ -210,10 +177,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 20.0,
+      "value": 6.1,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-09-08"
+      "category": "caution",
+      "date": "2026-09-22"
     },
     {
       "site": "Seabreeze Lake",
