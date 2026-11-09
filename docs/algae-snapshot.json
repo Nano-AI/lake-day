@@ -1,9 +1,9 @@
 {
-  "generated": "2026-11-08T19:23:31Z",
+  "generated": "2026-11-09T23:42:55Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-09-09",
-    "end": "2026-11-08"
+    "start": "2026-09-10",
+    "end": "2026-11-09"
   },
   "advisories": [
     {
@@ -335,17 +335,6 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-10-19"
-    },
-    {
-      "site": "Lost Lake",
-      "county": "Snohomish",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 43.5,
-      "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-09-09"
     },
     {
       "site": "Picnic Point Lake",
