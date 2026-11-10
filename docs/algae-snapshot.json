@@ -1,9 +1,9 @@
 {
-  "generated": "2026-11-09T23:42:55Z",
+  "generated": "2026-11-10T21:13:48Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-09-10",
-    "end": "2026-11-09"
+    "start": "2026-09-11",
+    "end": "2026-11-10"
   },
   "advisories": [
     {
@@ -247,17 +247,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-11-02"
-    },
-    {
-      "site": "Steilacoom Lake",
-      "county": "Pierce",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 561.0,
-      "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-09-10"
     },
     {
       "site": "Tanwax Lake",
