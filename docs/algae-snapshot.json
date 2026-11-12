@@ -1,21 +1,32 @@
 {
-  "generated": "2026-11-11T21:46:30Z",
+  "generated": "2026-11-12T21:46:07Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-09-12",
-    "end": "2026-11-11"
+    "start": "2026-09-13",
+    "end": "2026-11-12"
   },
   "advisories": [
+    {
+      "site": "Kline Pond",
+      "county": "Clark",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.9,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-11-09"
+    },
     {
       "site": "Lacamas Lake",
       "county": "Clark",
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 7.9,
+      "value": 0.7,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-11-02"
+      "date": "2026-11-09"
     },
     {
       "site": "Round Lake",
@@ -430,10 +441,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 44.0,
+      "value": 57.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-11-03"
+      "date": "2026-11-09"
     },
     {
       "site": "Pattison Lake",
@@ -441,10 +452,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 54.0,
+      "value": 84.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-11-03"
+      "date": "2026-11-09"
     },
     {
       "site": "Casey Pond",
