@@ -1,9 +1,9 @@
 {
-  "generated": "2026-11-13T21:14:40Z",
+  "generated": "2026-11-14T19:48:06Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-09-14",
-    "end": "2026-11-13"
+    "start": "2026-09-15",
+    "end": "2026-11-14"
   },
   "advisories": [
     {
@@ -51,17 +51,6 @@
       "date": "2026-09-22"
     },
     {
-      "site": "Moses Lake South",
-      "county": "Grant",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 758.0,
-      "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-09-14"
-    },
-    {
       "site": "Duck Lake",
       "county": "Grays Harbor",
       "lat": null,
@@ -89,10 +78,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 29.4,
+      "value": 0.4,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-09-14"
+      "category": "caution",
+      "date": "2026-10-05"
     },
     {
       "site": "Green Lake (Duck Island Launch)",
@@ -199,10 +188,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 28.2,
+      "value": 6.4,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-09-14"
+      "category": "caution",
+      "date": "2026-10-12"
     },
     {
       "site": "Bay Lake",
@@ -423,17 +412,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-10-19"
-    },
-    {
-      "site": "Lake Lawrence",
-      "county": "Thurston",
-      "lat": null,
-      "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 0.012,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-09-14"
     },
     {
       "site": "Offutt Lake",
