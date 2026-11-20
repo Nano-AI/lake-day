@@ -1,9 +1,9 @@
 {
-  "generated": "2026-11-19T22:35:58Z",
+  "generated": "2026-11-20T22:09:39Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-09-20",
-    "end": "2026-11-19"
+    "start": "2026-09-21",
+    "end": "2026-11-20"
   },
   "advisories": [
     {
@@ -12,10 +12,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 0.9,
+      "value": 0.8,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-11-09"
+      "date": "2026-11-16"
     },
     {
       "site": "Lacamas Lake",
@@ -23,10 +23,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 0.7,
+      "value": 0.9,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-11-09"
+      "date": "2026-11-16"
     },
     {
       "site": "Round Lake",
@@ -34,10 +34,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 5.2,
+      "value": 4.0,
       "unit": "ug/L",
       "category": "caution",
-      "date": "2026-10-26"
+      "date": "2026-11-16"
     },
     {
       "site": "Connelly Park (Moses Lake)",
@@ -183,6 +183,17 @@
       "date": "2026-09-22"
     },
     {
+      "site": "Spearfish Lake",
+      "county": "Klickitat",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 0.7,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-11-16"
+    },
+    {
       "site": "Seabreeze Lake",
       "county": "Pacific",
       "lat": null,
@@ -275,8 +286,8 @@
       "county": "Skagit",
       "lat": null,
       "lon": null,
-      "toxin": "Anatoxin-a",
-      "value": 62.9,
+      "toxin": "Microcystin",
+      "value": 994.0,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-10-05"
@@ -286,8 +297,8 @@
       "county": "Skagit",
       "lat": null,
       "lon": null,
-      "toxin": "Microcystin",
-      "value": 994.0,
+      "toxin": "Anatoxin-a",
+      "value": 62.9,
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-10-05"
@@ -302,6 +313,28 @@
       "unit": "ug/L",
       "category": "caution",
       "date": "2026-11-02"
+    },
+    {
+      "site": "Lake Cassidy",
+      "county": "Snohomish",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 5.0,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-11-16"
+    },
+    {
+      "site": "Howard Lake",
+      "county": "Snohomish",
+      "lat": null,
+      "lon": null,
+      "toxin": "Microcystin",
+      "value": 3.4,
+      "unit": "ug/L",
+      "category": "caution",
+      "date": "2026-11-16"
     },
     {
       "site": "Lake Loma",
@@ -430,10 +463,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 84.0,
+      "value": 121.0,
       "unit": "ug/L",
       "category": "danger",
-      "date": "2026-11-09"
+      "date": "2026-11-17"
     },
     {
       "site": "Casey Pond",
