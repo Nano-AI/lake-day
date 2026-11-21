@@ -1,9 +1,9 @@
 {
-  "generated": "2026-11-20T22:09:39Z",
+  "generated": "2026-11-21T20:48:07Z",
   "source": "nwtoxicalgae.org",
   "window": {
-    "start": "2026-09-21",
-    "end": "2026-11-20"
+    "start": "2026-09-22",
+    "end": "2026-11-21"
   },
   "advisories": [
     {
@@ -126,17 +126,6 @@
       "unit": "ug/L",
       "category": "danger",
       "date": "2026-10-18"
-    },
-    {
-      "site": "Green Lake (East Beach)",
-      "county": "King",
-      "lat": null,
-      "lon": null,
-      "toxin": "Microcystin",
-      "value": 2.07,
-      "unit": "ug/L",
-      "category": "caution",
-      "date": "2026-09-21"
     },
     {
       "site": "Lake Wilderness",
@@ -496,10 +485,10 @@
       "lat": null,
       "lon": null,
       "toxin": "Microcystin",
-      "value": 19.2,
+      "value": 5.6,
       "unit": "ug/L",
-      "category": "danger",
-      "date": "2026-09-21"
+      "category": "caution",
+      "date": "2026-10-05"
     }
   ]
 }
